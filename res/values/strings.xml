@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">opsdriod</string>
+    <string-array name="task_type_array">
+        <item>Workflow</item>
+        <item>Linux/Unix</item>
+        <item>Sleep Tasks</item>
+        <item>Windows</item>
+        <item>z/OS</item>
+        <item>Monitors</item>
+        <item>File Transfer Task</item>
+    </string-array>
+    <string-array name="sample_task_array">
+        <item>Task1</item>
+        <item>Task2</item>
+        <item>Task3</item>
+        <item>Task4</item>
+        <item>Task5</item>
+        <item>Task6</item>
+        <item>Task7</item>
+    </string-array>
+</resources>
