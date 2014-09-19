@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Server Details" >
+        <EditTextPreference
+                android:title="Server"
+                android:summary="Server Host Adress"
+                android:key="server"/>
+        <EditTextPreference
+                android:title="Username"
+                android:summary="Opswise Username"
+                android:key="username"/>
+        <EditTextPreference
+                android:title="Password"
+                android:summary="Opswise Password"
+                android:key="password"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Notifications" >
+        <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="send_notifications"
+                android:summary="Failure Notifications"
+                android:title="Notifications" >
+        </CheckBoxPreference>
+        <ListPreference
+                android:key="sync_interval"
+                android:entries="@array/syncFrequency"
+                android:summary="Frequency in minutes"
+                android:entryValues="@array/syncFrequencyValues"
+                android:title="Frequency" />
+    </PreferenceCategory>
+</PreferenceScreen>

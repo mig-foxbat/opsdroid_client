@@ -15,14 +15,10 @@ import android.widget.Button;
  */
 public class TaskDate extends ListFragment {
 
-    GestureDetector gdectector;
-    GestureEventHandler ghandler;
 
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        ghandler = new GestureEventHandler(this);
-        gdectector = new GestureDetector(this.getActivity(),ghandler);
     }
 
 
@@ -38,13 +34,6 @@ public class TaskDate extends ListFragment {
                 DialogFragment fragment = new DateSelector();
                 fragment.show(getFragmentManager(),"datepicker");
             }
-        });
-        view.setOnTouchListener( new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return gdectector.onTouchEvent(event);
-            }
-
         });
         return view;
     }

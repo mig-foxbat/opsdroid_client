@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-     android:ordering="sequentially">
+     android:ordering="together">
     <objectAnimator
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:interpolator="@android:anim/linear_interpolator"
@@ -9,7 +9,14 @@
             android:duration="500"
             android:valueFrom="0"
             android:valueTo="1"/>
-
+    <objectAnimator
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:interpolator="@android:anim/linear_interpolator"
+            android:propertyName="scaleY"
+            android:valueType="floatType"
+            android:duration="500"
+            android:valueFrom="0"
+            android:valueTo="1"/>
     <objectAnimator
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:interpolator="@android:anim/linear_interpolator"

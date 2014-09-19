@@ -5,7 +5,6 @@
               android:layout_height="match_parent"
               android:paddingLeft="8dp"
               android:paddingRight="8dp">
-
     <ListView android:id="@id/android:list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -18,9 +17,9 @@
                   android:paddingLeft="8dp"
                   android:paddingRight="8dp"
                   android:layout_weight="0.1"
-                  android:id="@+id/type_widget_container">
+                  android:id="@+id/status_widget_container">
         <Spinner
-                android:id="@+id/task_type_list"
+                android:id="@+id/task_status_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"/>
@@ -29,7 +28,6 @@
                 android:layout_width="wrap_content"
                 android:text="Refresh"
                 android:layout_weight="0.1"/>
-
     </LinearLayout>
 
 </LinearLayout>
