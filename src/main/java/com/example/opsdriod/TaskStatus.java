@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import com.example.opsdriod.model.DatabaseHandler;
 
 /**
  * Created by chlr on 9/19/14.
  */
-public class TaskStatus extends ListFragment {
+public class TaskStatus extends OpsListFragment {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -24,12 +25,18 @@ public class TaskStatus extends ListFragment {
         View view = inflater.inflate(R.layout.taskstatus,container,false);
         Spinner spinner = (Spinner)view.findViewById(R.id.task_status_list);
         spinner.setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,new String[] {"Running","Failed","Defined","Resource Wait","Waiting"}));
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),R.array.task_type_array,android.R.layout.simple_list_item_1);
-        this.setListAdapter(adapter);
+        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),R.array.task_type_array,android.R.layout.simple_list_item_1);
+        //this.setListAdapter(adapter);
         return view;
     }
 
     public void onRefresh(View view) {
         Log.v(this.getClass().getName(), "Refresh request detected " + view.getClass().getName());
+
+    }
+
+    @Override
+    public void refreshData() {
+
     }
 }

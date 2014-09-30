@@ -9,6 +9,13 @@
         <item>z/OS</item>
         <item>Monitors</item>
         <item>File Transfer Task</item>
+        <item>Workflow</item>
+        <item>Linux/Unix</item>
+        <item>Sleep Tasks</item>
+        <item>Windows</item>
+        <item>z/OS</item>
+        <item>Monitors</item>
+        <item>File Transfer Task</item>
     </string-array>
     <string-array name="sample_task_array">
         <item>Task1</item>
@@ -20,16 +27,64 @@
         <item>Task7</item>
     </string-array>
     <string-array name="syncFrequency">
-        <item name="1">5</item>
-        <item name="7">10</item>
-        <item name="3">15</item>
-        <item name="0">20</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
     </string-array>
-    <string-array name="syncFrequencyValues">
-        <item name="1">5</item>
-        <item name="7">10</item>
-        <item name="30">15</item>
-        <item name="0">20</item>
+    <string-array name="syncStatusTypes">
+        <item name="60">Action Required</item>
+        <item name="99">Cancel Pending</item>
+        <item name="130">Cancelled</item>
+        <item name="125">Confirmation Required</item>
+        <item name="0">Defined</item>
+        <item name="22">Exclusive Requested</item>
+        <item name="23">Exclusive Wait</item>
+        <item name="33">Execution Wait</item>
+        <item name="140">Failed</item>
+        <item name="190">Finished</item>
+        <item name="20">Held</item>
+        <item name="110">In Doubt</item>
+        <item name="40">Queued</item>
+        <item name="25">Resource Requested</item>
+        <item name="30">Resource Wait</item>
+        <item name="80">Running</item>
+        <item name="81">Running Problems</item>
+        <item name="180">Skipped</item>
+        <item name="120">Start Failure</item>
+        <item name="70">Started</item>
+        <item name="45">Step Restarted</item>
+        <item name="43">Submitted</item>
+        <item name="200">Success</item>
+        <item name="35">Undeliverable</item>
+        <item name="10">Waiting</item>
     </string-array>
-
+    <string-array name="syncStatusTypesValues">
+        <item>60</item>
+        <item>99</item>
+        <item>130</item>
+        <item>125</item>
+        <item>0</item>
+        <item>22</item>
+        <item>23</item>
+        <item>33</item>
+        <item>140</item>
+        <item>190</item>
+        <item>20</item>
+        <item>110</item>
+        <item>40</item>
+        <item>25</item>
+        <item>30</item>
+        <item>80</item>
+        <item>81</item>
+        <item>180</item>
+        <item>120</item>
+        <item>70</item>
+        <item>45</item>
+        <item>43</item>
+        <item>200</item>
+        <item>35</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="empty_array"/>
 </resources>

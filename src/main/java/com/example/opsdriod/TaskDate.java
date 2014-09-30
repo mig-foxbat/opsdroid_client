@@ -13,7 +13,7 @@ import android.widget.Button;
 /**
  * Created by chlr on 9/18/14.
  */
-public class TaskDate extends ListFragment {
+public class TaskDate extends OpsListFragment {
 
 
     @Override
@@ -39,4 +39,9 @@ public class TaskDate extends ListFragment {
     }
 
 
+    @Override
+    public void refreshData() {
+
+
+    }
 }

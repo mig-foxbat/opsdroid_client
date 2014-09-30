@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+            android:title="Connection Settings">
     <PreferenceCategory android:title="Server Details" >
         <EditTextPreference
                 android:title="Server"
                 android:summary="Server Host Adress"
                 android:key="server"/>
+        <EditTextPreference
+                android:title="Port"
+                android:summary="Server Port Adress"
+                android:key="port"
+                android:defaultValue="80"/>
         <EditTextPreference
                 android:title="Username"
                 android:summary="Opswise Username"
@@ -12,20 +19,34 @@
         <EditTextPreference
                 android:title="Password"
                 android:summary="Opswise Password"
+                android:inputType="textPassword"
                 android:key="password"/>
     </PreferenceCategory>
+        </PreferenceScreen>
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:title="Notification Settings">
     <PreferenceCategory android:title="Notifications" >
         <CheckBoxPreference
                 android:defaultValue="false"
                 android:key="send_notifications"
-                android:summary="Failure Notifications"
+                android:summary="Enable Notifications"
                 android:title="Notifications" >
         </CheckBoxPreference>
         <ListPreference
                 android:key="sync_interval"
                 android:entries="@array/syncFrequency"
                 android:summary="Frequency in minutes"
-                android:entryValues="@array/syncFrequencyValues"
+                android:entryValues="@array/syncFrequency"
                 android:title="Frequency" />
+        <MultiSelectListPreference
+                android:defaultValue="@array/empty_array"
+                android:enabled="true"
+                android:entries="@array/syncStatusTypes"
+                android:entryValues="@array/syncStatusTypes"
+                android:key="TargetList"
+                android:persistent="true"
+                android:summary="Status to be monitored"
+                android:title="Status" />
     </PreferenceCategory>
+        </PreferenceScreen>
 </PreferenceScreen>

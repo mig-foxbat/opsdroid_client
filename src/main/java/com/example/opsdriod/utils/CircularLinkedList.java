@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package com.example.opsdriod.utils;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,6 +22,10 @@ public class CircularLinkedList<T> {
         return this;
     }
 
+    public T getCurrent() {
+        return list.get(counter.get()%list.size());
+    }
+
     public T getNext() {
         return list.get(counter.incrementAndGet()%list.size());
     }
@@ -29,6 +33,7 @@ public class CircularLinkedList<T> {
     public T getPrevious() {
         return list.get(counter.decrementAndGet()%list.size());
     }
+
 
 
     public T getAtIndex(int i) {

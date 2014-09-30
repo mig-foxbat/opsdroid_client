@@ -1,9 +1,10 @@
 package com.example.opsdriod;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MenuItem;
@@ -11,6 +12,14 @@ import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.Menu;
 import android.content.Intent;
+import com.example.opsdriod.rest.UrlSynthesizer;
+import com.example.opsdriod.utils.AppObjectRepository;
+import com.example.opsdriod.utils.CircularLinkedList;
+
+import java.net.URL;
+import java.sql.Ref;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends Activity
@@ -18,24 +27,21 @@ public class MainActivity extends Activity
     /**
      * Called when the activity is first created.
      */
-    private boolean state = false;
-    Fragment tasktype,taskdate;
+
     GestureDetector gdectector;
     GestureEventHandler ghandler;
-    CircularLinkedList<Fragment> fragment_list;
+    CircularLinkedList<OpsListFragment> fragment_list;
 
     public MainActivity() {
         initAndAddFragments();
     }
 
     private void initAndAddFragments() {
-        fragment_list = new CircularLinkedList<Fragment>();
+        fragment_list = new CircularLinkedList<OpsListFragment>();
         fragment_list.addNode(new TaskType());
         fragment_list.addNode(new TaskDate());
         fragment_list.addNode(new TaskStatus());
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,9 @@ public class MainActivity extends Activity
         transaction.commit();
         ghandler = new GestureEventHandler(this);
         gdectector = new GestureDetector(this,ghandler);
+        AppObjectRepository.setAppSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));
+        AppObjectRepository.setContextObject(this);
+
     }
 
     @Override
@@ -66,6 +75,9 @@ public class MainActivity extends Activity
             case R.id.action_search:
                 Log.v(this.getClass().getName(),"Search Bar Hit detected");
                 return true;
+            case R.id.action_refresh:
+                Log.v(this.getClass().getName(),"Refresh detected");
+                initiateRefresh();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -80,6 +92,12 @@ public class MainActivity extends Activity
         transaction.commit();
      }
 
+    private void initiateRefresh() {
+        int datekey = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
+        String url = new UrlSynthesizer().task_date(datekey);
+        new RefreshData().execute(datekey);
+    }
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent me) {
@@ -87,4 +105,21 @@ public class MainActivity extends Activity
         super.dispatchTouchEvent(me);
         return false;
     }
+
+
+    private class RefreshData extends AsyncTask<Integer,Void,Void> {
+        @Override
+        protected Void doInBackground(Integer... datekey) {
+            ServiceWorker worker = new ServiceWorker();
+            worker.refreshDataForDate(datekey[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void a) {
+            OpsListFragment frag = fragment_list.getCurrent();
+            frag.refreshData();
+        }
+    }
+
 }
