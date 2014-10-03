@@ -13,7 +13,7 @@ public class CircularLinkedList<T> {
     private ArrayList<T> list;
 
     public CircularLinkedList() {
-        list = new ArrayList<T>(10);
+        list = new ArrayList<>(10);
         counter = new AtomicInteger(0);
     }
 
@@ -27,11 +27,11 @@ public class CircularLinkedList<T> {
     }
 
     public T getNext() {
-        return list.get(counter.incrementAndGet()%list.size());
+        return list.get(Math.abs(counter.incrementAndGet())%list.size());
     }
 
     public T getPrevious() {
-        return list.get(counter.decrementAndGet()%list.size());
+        return list.get(Math.abs(counter.decrementAndGet())%list.size());
     }
 
 

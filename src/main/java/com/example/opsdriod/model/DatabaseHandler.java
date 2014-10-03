@@ -69,7 +69,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 builder.append("," + key + " " + value);
             }
             builder.append(");");
-            Log.i("TAG",builder.toString());
             return builder.toString();
         } catch (JSONException e) {
             Log.e(this.getClass().getName(), e.getMessage());
@@ -100,7 +99,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }
                 database.insert(tablename, null, cv);
             } catch (JSONException e) {
-
+                Log.e(this.getClass().getName(),e.getMessage());
             }
         }
     }

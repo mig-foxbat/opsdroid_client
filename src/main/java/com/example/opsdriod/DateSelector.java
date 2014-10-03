@@ -2,12 +2,15 @@ package com.example.opsdriod;
 
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Dialog;
+import android.preference.PreferenceManager;
 import android.widget.DatePicker;
 
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by chlr on 9/19/14.
@@ -30,6 +33,8 @@ public class DateSelector extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the user
+         SharedPreferences perfs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+         SharedPreferences.Editor editor = perfs.edit();
+         editor.putInt("datekey",Integer.parseInt(String.format("%04d",year)+String.format("%02d",month)+String.format("%02d",day)));
     }
 }

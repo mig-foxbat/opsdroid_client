@@ -4,7 +4,7 @@ import org.json.JSONArray;
 /**
  * Created by chlr on 9/21/14.
  */
-public class OpswiseMasterManager implements DatabaseManager {
+public class OpswiseMasterManager  {
 
     private static final String TABLENAME = "opswise_master";
     private DatabaseHandler dbhandler;

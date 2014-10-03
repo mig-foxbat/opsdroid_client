@@ -1,6 +1,8 @@
 package com.example.opsdriod;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,13 +18,12 @@ import com.example.opsdriod.rest.UrlSynthesizer;
 import com.example.opsdriod.utils.AppObjectRepository;
 import com.example.opsdriod.utils.CircularLinkedList;
 
-import java.net.URL;
-import java.sql.Ref;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements ActionBar.TabListener
 {
     /**
      * Called when the activity is first created.
@@ -39,7 +40,7 @@ public class MainActivity extends Activity
     private void initAndAddFragments() {
         fragment_list = new CircularLinkedList<OpsListFragment>();
         fragment_list.addNode(new TaskType());
-        fragment_list.addNode(new TaskDate());
+        //fragment_list.addNode(new TaskDate());
         fragment_list.addNode(new TaskStatus());
     }
 
@@ -78,6 +79,11 @@ public class MainActivity extends Activity
             case R.id.action_refresh:
                 Log.v(this.getClass().getName(),"Refresh detected");
                 initiateRefresh();
+                return true;
+            case R.id.action_calendar:
+                DialogFragment fragment = new DateSelector();
+                fragment.show(getFragmentManager(),"datepicker");
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -104,6 +110,21 @@ public class MainActivity extends Activity
         gdectector.onTouchEvent(me);
         super.dispatchTouchEvent(me);
         return false;
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 
 

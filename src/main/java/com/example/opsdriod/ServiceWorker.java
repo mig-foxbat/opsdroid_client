@@ -1,5 +1,7 @@
 package com.example.opsdriod;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import com.example.opsdriod.model.DatabaseHandler;
 import com.example.opsdriod.model.OpswiseMasterManager;
 import com.example.opsdriod.rest.RequestDispatcher;
@@ -20,10 +22,13 @@ public class ServiceWorker {
 
 
     public void refreshDataForDate(int datekey) {
-        JSONArray arr =  (new RequestDispatcher()).getJsonArrayResponse(new UrlSynthesizer().task_date(datekey));
-        OpswiseMasterManager ops_master_mgr = new OpswiseMasterManager();
-        ops_master_mgr.deleteDate(datekey);
-        ops_master_mgr.populateTable(arr);
+        ConnectivityManager cm = (ConnectivityManager)AppObjectRepository.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected() == true) {
+            JSONArray arr = (new RequestDispatcher()).getJsonArrayResponse(new UrlSynthesizer().task_date(datekey));
+            OpswiseMasterManager ops_master_mgr = new OpswiseMasterManager();
+            ops_master_mgr.deleteDate(datekey);
+            ops_master_mgr.populateTable(arr);
+        }
     }
 
 

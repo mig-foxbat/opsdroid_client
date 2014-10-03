@@ -29,7 +29,6 @@ public class RequestDispatcher
             conn.setDoInput(true);
             conn.connect();
             int response = conn.getResponseCode();
-            Log.d(this.getClass().getName(), "The response is: " + response);
             is = conn.getInputStream();
             String contentAsString = getString(is);
             return contentAsString;

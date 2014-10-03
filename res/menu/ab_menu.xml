@@ -4,13 +4,17 @@
           android:title="Search"
           android:icon="@drawable/ic_action_search"
           android:showAsAction="collapseActionView|ifRoom"
-          android:actionViewClass="android.widget.SearchView" />
+          android:actionViewClass="android.widget.SearchView"/>
     <item android:id="@+id/action_refresh"
           android:icon="@drawable/ic_action_refresh"
-          android:showAsAction="ifRoom"
-          android:title="/Refresh" />
+          android:title="Refresh"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_calendar"
+          android:icon="@drawable/ic_action_calendar"
+          android:title="Calendar"
+          android:showAsAction="ifRoom"/>
     <item android:id="@+id/action_settings"
           android:icon="@drawable/ic_action_settings"
-          android:showAsAction="ifRoom"
-          android:title="/Settings" />
+          android:title="Settings"
+          android:showAsAction="ifRoom"/>
 </menu>
