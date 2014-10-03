@@ -45,7 +45,7 @@ public class GestureEventHandler implements GestureDetector.OnGestureListener {
     @Override
     public boolean onFling(MotionEvent me1, MotionEvent me2, float v, float v2) {
         if (Math.abs(me1.getX() - me2.getX()) > Math.abs(me1.getY() - me2.getY())) {
-            ((MainActivity) this.source).changeFragment(me1.getX() < me1.getY()?true:false);
+       //     ((MainActivity) this.source).changeFragment(me1.getX() < me1.getY()?true:false);
             Log.v(this.getClass().getName(), "OnFling Motion detected");
         }
         return false;

@@ -1,6 +1,5 @@
 package com.example.opsdriod;
 
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,12 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import com.example.opsdriod.model.DatabaseHandler;
 
 /**
  * Created by chlr on 9/19/14.
  */
-public class TaskStatus extends OpsListFragment {
+public class TriggerFragment extends OpsListFragment {
 
     @Override
     public void onCreate(Bundle savedInstance) {
@@ -22,7 +20,7 @@ public class TaskStatus extends OpsListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.taskstatus,container,false);
+        View view = inflater.inflate(R.layout.triggerfragment,container,false);
         Spinner spinner = (Spinner)view.findViewById(R.id.task_status_list);
         spinner.setAdapter(new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,new String[] {"Running","Failed","Defined","Resource Wait","Waiting"}));
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getActivity(),R.array.task_type_array,android.R.layout.simple_list_item_1);

@@ -32,7 +32,7 @@
         <item>15</item>
         <item>20</item>
     </string-array>
-    <string-array name="syncStatusTypes">
+    <string-array name="statusTypes">
         <item name="60">Action Required</item>
         <item name="99">Cancel Pending</item>
         <item name="130">Cancelled</item>

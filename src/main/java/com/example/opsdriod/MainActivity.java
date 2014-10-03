@@ -8,19 +8,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MenuItem;
-import android.view.MenuInflater;
-import android.view.MotionEvent;
-import android.view.Menu;
+import android.view.*;
 import android.content.Intent;
 import com.example.opsdriod.rest.UrlSynthesizer;
 import com.example.opsdriod.utils.AppObjectRepository;
-import com.example.opsdriod.utils.CircularLinkedList;
+import com.example.opsdriod.utils.TaskFilterFragment;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener
@@ -31,26 +30,27 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
     GestureDetector gdectector;
     GestureEventHandler ghandler;
-    CircularLinkedList<OpsListFragment> fragment_list;
+    List<OpsListFragment> fraglist = new ArrayList<>(3);
 
-    public MainActivity() {
-        initAndAddFragments();
-    }
+    private void setUpActionBarTabs() {
 
-    private void initAndAddFragments() {
-        fragment_list = new CircularLinkedList<OpsListFragment>();
-        fragment_list.addNode(new TaskType());
-        //fragment_list.addNode(new TaskDate());
-        fragment_list.addNode(new TaskStatus());
+        fraglist.add(new TaskFragment());
+        fraglist.add(new TriggerFragment());
+        fraglist.add(new ReportFragment());
+
+        ActionBar actionbar = this.getActionBar();
+        actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        actionbar.addTab(actionbar.newTab().setText("Task").setTabListener(this),true);
+        actionbar.addTab(actionbar.newTab().setText("Trigger").setTabListener(this));
+        actionbar.addTab(actionbar.newTab().setText("Report").setTabListener(this));
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_holder,fragment_list.getAtIndex(0));
-        transaction.commit();
+        setUpActionBarTabs();
         ghandler = new GestureEventHandler(this);
         gdectector = new GestureDetector(this,ghandler);
         AppObjectRepository.setAppSharedPreference(PreferenceManager.getDefaultSharedPreferences(this));
@@ -91,10 +91,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
 
 
-    public void changeFragment(boolean direction) {
+    private void changeFragment(int i) {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
-        transaction.replace(R.id.fragment_holder,direction?fragment_list.getNext():fragment_list.getPrevious());
+     //   transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+        transaction.replace(R.id.fragment_holder,fraglist.get(i));
         transaction.commit();
      }
 
@@ -103,6 +103,14 @@ public class MainActivity extends Activity implements ActionBar.TabListener
         String url = new UrlSynthesizer().task_date(datekey);
         new RefreshData().execute(datekey);
     }
+
+    private void showSettingsFragment() {
+        FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+        transaction.add(R.id.fragment_holder,new TaskFilterFragment());
+        transaction.commit();
+    }
+
 
 
     @Override
@@ -114,7 +122,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
+        this.changeFragment(tab.getPosition());
     }
 
     @Override
@@ -138,9 +146,15 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
         @Override
         protected void onPostExecute(Void a) {
-            OpsListFragment frag = fragment_list.getCurrent();
+            OpsListFragment frag = fraglist.get(getActionBar().getSelectedTab().getPosition());
             frag.refreshData();
         }
     }
+
+    public void onButtonClick(View view) {
+        Log.v(this.getClass().getName(),"Filter Settings");
+        showSettingsFragment();
+    }
+
 
 }

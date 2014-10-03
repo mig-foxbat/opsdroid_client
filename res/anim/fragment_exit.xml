@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
 android:ordering="sequentially">
-        <objectAnimator
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:interpolator="@android:anim/linear_interpolator"
-        android:propertyName="alpha"
-        android:duration="300"
-        android:valueFrom="1"
-        android:valueTo="0"
-        />
+    <objectAnimator
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:interpolator="@android:anim/linear_interpolator"
+            android:propertyName="scaleY"
+            android:valueType="floatType"
+            android:duration="300"
+            android:valueTo="0"/>
 </set>
