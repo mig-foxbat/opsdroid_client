@@ -12,7 +12,6 @@ import android.view.*;
 import android.content.Intent;
 import com.example.opsdriod.rest.UrlSynthesizer;
 import com.example.opsdriod.utils.AppObjectRepository;
-import com.example.opsdriod.utils.TaskFilterFragment;
 
 
 import java.text.SimpleDateFormat;
@@ -107,7 +106,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
     private void showSettingsFragment() {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
-        transaction.add(R.id.fragment_holder,new TaskFilterFragment());
+        transaction.replace(R.id.fragment_holder,new TaskFilterFragment());
         transaction.commit();
     }
 

@@ -5,8 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
+import com.example.opsdriod.model.TaskFilterModel;
 import com.example.opsdriod.utils.AppObjectRepository;
+
+
 
 /**
  * Created by chlr on 10/3/14.
@@ -16,12 +20,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     String[] task_type_array,task_status_array;
     String[][] parent_array;
     Context context;
+    TaskFilterModel filter_model;
+
 
     public ExpandableListAdapter() {
         this.context = AppObjectRepository.getContext();
          task_type_array = context.getResources().getStringArray(R.array.task_type_array);
-         task_status_array = context.getResources().getStringArray(R.array.statusTypes);
+         task_status_array = context.getResources().getStringArray(R.array.task_status_array);
          parent_array = new String[][] {task_type_array,task_status_array};
+        filter_model = TaskFilterModel.getInstance();
     }
 
 
@@ -83,12 +90,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, final int childPosition,boolean isLastChild, View convertView, ViewGroup parent) {
-        String headerTitle = (String) getChild(groupPosition,childPosition);
+        String headerTitle = (String) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(android.R.layout.simple_list_item_multiple_choice, null);
             }
-        ((TextView)convertView.findViewById(android.R.id.text1)).setText(headerTitle);
+        CheckedTextView ctv = ((CheckedTextView)convertView.findViewById(android.R.id.text1));
+        ctv.setText(headerTitle);
+        ctv.setChecked(filter_model.getCheckStatus(groupPosition,childPosition));
         return convertView;
     }
 

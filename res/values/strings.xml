@@ -9,22 +9,15 @@
         <item>z/OS</item>
         <item>Monitors</item>
         <item>File Transfer Task</item>
-        <item>Workflow</item>
-        <item>Linux/Unix</item>
-        <item>Sleep Tasks</item>
-        <item>Windows</item>
-        <item>z/OS</item>
-        <item>Monitors</item>
-        <item>File Transfer Task</item>
     </string-array>
-    <string-array name="sample_task_array">
-        <item>Task1</item>
-        <item>Task2</item>
-        <item>Task3</item>
-        <item>Task4</item>
-        <item>Task5</item>
-        <item>Task6</item>
-        <item>Task7</item>
+    <string-array name="task_type_array_values">
+        <item>ops_task_workflow</item>
+        <item>ops_task_unix</item>
+        <item>ops_task_sleep</item>
+        <item>ops_task_windows</item>
+        <item>ops_task_zos</item>
+        <item>ops_task_monitor</item>
+        <item>ops_task_ftp</item>
     </string-array>
     <string-array name="syncFrequency">
         <item>5</item>
@@ -32,7 +25,7 @@
         <item>15</item>
         <item>20</item>
     </string-array>
-    <string-array name="statusTypes">
+    <string-array name="task_status_array">
         <item name="60">Action Required</item>
         <item name="99">Cancel Pending</item>
         <item name="130">Cancelled</item>
@@ -59,7 +52,7 @@
         <item name="35">Undeliverable</item>
         <item name="10">Waiting</item>
     </string-array>
-    <string-array name="syncStatusTypesValues">
+    <string-array name="task_status_array_values">
         <item>60</item>
         <item>99</item>
         <item>130</item>

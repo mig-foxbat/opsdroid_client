@@ -3,6 +3,7 @@ package com.example.opsdriod.utils;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.example.opsdriod.model.TaskFilterModel;
 
 /**
  * Created by chlr on 9/20/14.
@@ -28,6 +29,7 @@ public class AppObjectRepository {
     public static Context getContext() {
         return AppObjectRepository.context;
     }
+
 
 
 }

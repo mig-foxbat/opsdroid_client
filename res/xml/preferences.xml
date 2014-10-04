@@ -41,8 +41,8 @@
         <MultiSelectListPreference
                 android:defaultValue="@array/empty_array"
                 android:enabled="true"
-                android:entries="@array/statusTypes"
-                android:entryValues="@array/statusTypes"
+                android:entries="@array/task_status_array"
+                android:entryValues="@array/task_status_array"
                 android:key="TargetList"
                 android:persistent="true"
                 android:summary="Status to be monitored"

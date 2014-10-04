@@ -19,9 +19,11 @@ import java.util.ArrayList;
 public class TaskTypeAdapter extends BaseAdapter {
 
     private ArrayList<Record> records;
+    private ArrayList<Record> masterrecords;
 
     public TaskTypeAdapter() {
-        records = new ArrayList<>(20);
+        records = new ArrayList<>(100);
+        masterrecords = new ArrayList<>(100);
     }
 
     @Override
@@ -50,24 +52,28 @@ public class TaskTypeAdapter extends BaseAdapter {
     }
 
     public void refreshData(int datekey) {
-        String sql = "SELECT distinct name,task_id FROM opswise_master WHERE datekey = %d";
+        String sql = "SELECT distinct name,task_id,sys_class_name,status_code FROM opswise_master WHERE datekey = %d";
         DatabaseHandler handler = new DatabaseHandler();
         Cursor cur = handler.executeQuery(String.format(sql, datekey), null);
         records.clear();
         for(cur.moveToFirst(); !cur.isAfterLast() ; cur.moveToNext()) {
-            Log.i(this.getClass().getName(),cur.getString(0));
-            records.add(new Record(cur.getString(0),cur.getString(1)));
+            masterrecords.add(new Record(cur.getString(0),cur.getString(1),cur.getString(2),cur.getInt(3)));
+            records.add(new Record(cur.getString(0),cur.getString(1),cur.getString(2),cur.getInt(3)));
         }
         cur.close();
     }
 
 
+
     private class Record
     {
-        String taskname,sys_id;
-        public Record(String taskname, String sys_id) {
+        String taskname,sys_id,sys_class_name;
+        int status_code;
+        public Record(String taskname, String sys_id,String sys_class_name,int status_code) {
             this.taskname = taskname;
             this.sys_id = sys_id;
+            this.sys_class_name = sys_class_name;
+            this.status_code = status_code;
         }
 
     }
