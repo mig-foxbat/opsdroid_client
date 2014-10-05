@@ -3,9 +3,11 @@ package com.example.opsdriod;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
-
+import android.widget.EditText;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,10 +31,34 @@ public class TaskFragment extends OpsListFragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.generateFilteredRecords();
+        adapter.notifyDataSetChanged();
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.taskfragment,container,false);
+        EditText et  = (EditText)view.findViewById(R.id.tasknamefilter);
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                adapter.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         return view;
     }
 
@@ -45,4 +71,7 @@ public class TaskFragment extends OpsListFragment {
         adapter.refreshData(datekey);
         adapter.notifyDataSetChanged();
     }
+
+
+
 }

@@ -106,6 +106,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
     private void showSettingsFragment() {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+            transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_holder,new TaskFilterFragment());
         transaction.commit();
     }

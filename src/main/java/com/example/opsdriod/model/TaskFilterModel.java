@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by chlr on 10/4/14.
@@ -59,6 +61,27 @@ public class TaskFilterModel {
             return false;
     }
 
+
+    public ArrayList<String> getSelectedTaskTypes() {
+        ArrayList<String> output = new ArrayList<>(10);
+        String[] lookup_arr = this.context.getResources().getStringArray(R.array.task_type_array_values);
+        for(int i = 0; i < type_check_list.length; i++) {
+            if(type_check_list[i])
+                output.add(lookup_arr[i]);
+        }
+        return output;
+    }
+
+
+    public ArrayList<Integer> getSelectedStatusTypes() {
+        ArrayList<Integer> output = new ArrayList<>(10);
+        String[] lookup_arr = this.context.getResources().getStringArray(R.array.task_status_array_values);
+        for(int i = 0; i < status_check_list.length; i++) {
+            if(status_check_list[i])
+                output.add(Integer.parseInt(lookup_arr[i]));
+        }
+        return output;
+    }
 
 
 
