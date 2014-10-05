@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.app.IntentService;
 import android.content.Intent;

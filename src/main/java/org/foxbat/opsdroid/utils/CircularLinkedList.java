@@ -1,4 +1,4 @@
-package com.example.opsdriod.utils;
+package org.foxbat.opsdroid.utils;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;

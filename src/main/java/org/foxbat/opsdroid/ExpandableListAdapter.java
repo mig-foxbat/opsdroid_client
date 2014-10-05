@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
-import com.example.opsdriod.model.TaskFilterModel;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.R;
+import org.foxbat.opsdroid.model.TaskFilterModel;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 
 
 

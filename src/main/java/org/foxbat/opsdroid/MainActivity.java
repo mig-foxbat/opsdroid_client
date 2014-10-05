@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,8 +10,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.content.Intent;
-import com.example.opsdriod.rest.UrlSynthesizer;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.rest.UrlSynthesizer;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 
 
 import java.text.SimpleDateFormat;

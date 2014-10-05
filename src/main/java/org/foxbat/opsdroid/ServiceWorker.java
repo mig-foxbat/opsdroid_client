@@ -1,19 +1,12 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import com.example.opsdriod.model.DatabaseHandler;
-import com.example.opsdriod.model.OpswiseMasterManager;
-import com.example.opsdriod.rest.RequestDispatcher;
-import com.example.opsdriod.rest.UrlSynthesizer;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.model.OpswiseMasterManager;
+import org.foxbat.opsdroid.rest.RequestDispatcher;
+import org.foxbat.opsdroid.rest.UrlSynthesizer;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 import org.json.JSONArray;
-
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
-
-import java.sql.ResultSet;
-import java.util.Date;
 
 /**
  * Created by chlr on 9/29/14.

@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 
 import android.content.SharedPreferences;
@@ -7,6 +7,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import org.foxbat.opsdroid.R;
 
 /**
  * Created by chlr on 9/19/14.

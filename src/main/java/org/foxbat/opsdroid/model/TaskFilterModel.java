@@ -1,11 +1,11 @@
-package com.example.opsdriod.model;
+package org.foxbat.opsdroid.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import com.example.opsdriod.R;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.R;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

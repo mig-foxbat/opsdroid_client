@@ -1,9 +1,7 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
-import android.test.ActivityInstrumentationTestCase2;
 import android.test.AndroidTestCase;
-import android.test.RenamingDelegatingContext;
-import com.example.opsdriod.model.DatabaseHandler;
+import org.foxbat.opsdroid.model.DatabaseHandler;
 
 /**
  * This is a simple framework for a test of an Application.  See

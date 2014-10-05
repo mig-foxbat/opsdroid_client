@@ -1,4 +1,4 @@
-package com.example.opsdriod.model;
+package org.foxbat.opsdroid.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import com.example.opsdriod.utils.AppAssetManager;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.utils.AppAssetManager;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

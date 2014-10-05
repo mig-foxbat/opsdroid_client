@@ -1,9 +1,7 @@
-package com.example.opsdriod.utils;
+package org.foxbat.opsdroid.utils;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.example.opsdriod.model.TaskFilterModel;
 
 /**
  * Created by chlr on 9/20/14.

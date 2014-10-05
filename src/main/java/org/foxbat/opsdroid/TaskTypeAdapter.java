@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,9 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import com.example.opsdriod.model.DatabaseHandler;
-import com.example.opsdriod.model.TaskFilterModel;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.R;
+import org.foxbat.opsdroid.model.DatabaseHandler;
+import org.foxbat.opsdroid.model.TaskFilterModel;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.opsdriod.model;
+package org.foxbat.opsdroid.model;
 import org.json.JSONArray;
 
 /**

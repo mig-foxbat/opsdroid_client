@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;

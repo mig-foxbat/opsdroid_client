@@ -1,4 +1,4 @@
-package com.example.opsdriod.rest;
+package org.foxbat.opsdroid.rest;
 
 /**
  * Created by chlr on 9/19/14.

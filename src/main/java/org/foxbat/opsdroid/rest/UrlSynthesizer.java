@@ -1,7 +1,7 @@
-package com.example.opsdriod.rest;
+package org.foxbat.opsdroid.rest;
 
 import android.content.SharedPreferences;
-import com.example.opsdriod.utils.AppObjectRepository;
+import org.foxbat.opsdroid.utils.AppObjectRepository;
 
 /**
  * Created by chlr on 9/20/14.

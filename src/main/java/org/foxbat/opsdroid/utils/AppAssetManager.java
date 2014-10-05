@@ -1,4 +1,4 @@
-package com.example.opsdriod.utils;
+package org.foxbat.opsdroid.utils;
 
 import android.content.Context;
 import android.util.Log;

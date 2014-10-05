@@ -1,4 +1,4 @@
-package com.example.opsdriod;
+package org.foxbat.opsdroid;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
 import android.widget.EditText;
+import org.foxbat.opsdroid.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
