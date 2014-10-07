@@ -1,6 +1,6 @@
 package org.foxbat.opsdroid.taskdetail;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -32,6 +32,7 @@ public class TaskDetailActivity extends FragmentActivity {
         ViewPager mPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(getIntent().getIntExtra("position",0));
     }
 
 
@@ -42,7 +43,7 @@ public class TaskDetailActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new TaskDetailMainFragment(list.get(position));
+            return new TaskDetailMainFragment(position);
         }
 
         @Override

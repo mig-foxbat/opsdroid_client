@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/tableLayout1"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent" >
+
+        <TableRow
+                android:id="@+id/table_row_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_name_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Name"/>
+
+            <TextView
+                    android:id="@+id/task_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_type_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Type"/>
+
+            <TextView
+                    android:id="@+id/task_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/summary_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Summary"/>
+
+            <TextView
+                    android:id="@+id/task_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_ref_count_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Ref count"/>
+
+            <TextView
+                    android:id="@+id/task_ref_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_status_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Status"/>
+
+            <TextView
+                    android:id="@+id/task_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_queued_time_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Queued Time"/>
+
+            <TextView
+                    android:id="@+id/task_queued_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_start_time_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Start Time"/>
+
+            <TextView
+                    android:id="@+id/task_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_end_time_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task End Time"/>
+
+            <TextView
+                    android:id="@+id/task_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_duration_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Duration"/>
+
+            <TextView
+                    android:id="@+id/task_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_retry_interval_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Retry Interval"/>
+
+            <TextView
+                    android:id="@+id/task_retry_interval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_retry_maximum_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Retry Maximum"/>
+
+            <TextView
+                    android:id="@+id/task_retry_maximum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_retry_indefinitely_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Retry Indefinitely"/>
+
+            <TextView
+                    android:id="@+id/task_retry_indefinitely"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_attempt_count_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Attempt Count"/>
+
+            <TextView
+                    android:id="@+id/task_attempt_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_sys_update_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="sys_updated"/>
+
+            <TextView
+                    android:id="@+id/task_sys_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+
+        <TableRow
+                android:id="@+id/table_row_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_sys_created_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="sys_created"/>
+
+            <TextView
+                    android:id="@+id/task_sys_created"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_execution_user_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Execution User"/>
+
+            <TextView
+                    android:id="@+id/task_execution_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+
+        <TableRow
+                android:id="@+id/table_row_17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_invoked_by_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Invoked by"/>
+
+            <TextView
+                    android:id="@+id/task_invoked_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+    </TableLayout>
+
+</ScrollView>

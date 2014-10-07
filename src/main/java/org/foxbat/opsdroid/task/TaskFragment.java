@@ -39,6 +39,8 @@ public class TaskFragment extends OpsListFragment {
     public void onResume() {
         super.onResume();
         adapter.generateFilteredRecords();
+        EditText et = (EditText) this.getView().findViewById(R.id.tasknamefilter);
+        adapter.getFilter().filter(et.getText());
         adapter.notifyDataSetChanged();
     }
 
@@ -81,8 +83,7 @@ public class TaskFragment extends OpsListFragment {
     public void onListItemClick(ListView lv, View v, int position, long id) {
         Log.v(this.getClass().getName(),"List Item Click detected");
         Intent intent = new Intent(this.getActivity(), TaskDetailActivity.class);
-
-
+        intent.putExtra("position",(int)id);
         startActivity(intent);
     }
 

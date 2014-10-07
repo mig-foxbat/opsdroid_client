@@ -8,18 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.foxbat.opsdroid.R;
-import org.foxbat.opsdroid.task.TaskRecord;
 
 /**
  * Created by chlr on 10/7/14.
  */
 public class TaskDetailMainFragment extends Fragment {
 
-    TaskRecord record;
+    int record_id;
 
-    public TaskDetailMainFragment(TaskRecord record) {
-        this.record = record;
-
+    public TaskDetailMainFragment(int record_id) {
+        this.record_id = record_id;
     }
 
 
@@ -28,16 +26,17 @@ public class TaskDetailMainFragment extends Fragment {
         View v = inflater.inflate(R.layout.task_detail_main_frag, container, false);
         FragmentTabHost tabhost = (FragmentTabHost)v.findViewById(android.R.id.tabhost);
         tabhost.setup(this.getActivity(),this.getChildFragmentManager(),android.R.id.tabcontent);
-
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",record_id);
         tabhost.addTab(
-                tabhost.newTabSpec("tab1").setIndicator("Tab 1", null),
-                TaskDetailTabFragment.class, null);
+                tabhost.newTabSpec("tab1").setIndicator("General", null),
+                TaskDetailGeneralTab.class, bundle);
         tabhost.addTab(
-                tabhost.newTabSpec("tab2").setIndicator("Tab 2", null),
-                TaskDetailTabFragment.class, null);
+                tabhost.newTabSpec("tab2").setIndicator("STD-out/err", null),
+                TaskDetailGeneralTab.class, bundle);
         tabhost.addTab(
-                tabhost.newTabSpec("tab3").setIndicator("Tab 3", null),
-                TaskDetailTabFragment.class, null);
+                tabhost.newTabSpec("tab3").setIndicator("History", null),
+                TaskDetailGeneralTab.class, bundle);
         return v;
     }
 }

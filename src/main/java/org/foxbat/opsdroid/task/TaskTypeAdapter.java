@@ -106,6 +106,11 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
         final_filtered_records = static_filter_records;
     }
 
+    public TaskRecord getTaskRecord(int position) {
+       return this.final_filtered_records.get(position);
+    }
+
+
     private boolean doesRecordQualify(TaskRecord record) {
         TaskFilterModel model = TaskFilterModel.getInstance();
         ArrayList<String> sel_task_types = model.getSelectedTaskTypes();
