@@ -15,6 +15,7 @@
             </intent-filter>
         </activity>
         <activity android:name="org.foxbat.opsdroid.SettingsActivity"/>
+        <activity android:name=".taskdetail.TaskDetailActivity"/>
         <service android:name="org.foxbat.opsdroid.BackgroundService"/>
     </application>
 </manifest>

@@ -1,4 +1,4 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.task;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -22,15 +22,24 @@ import java.util.List;
  */
 public class TaskTypeAdapter extends BaseAdapter implements Filterable {
 
-    private ArrayList<Record> static_filter_records;
-    private ArrayList<Record> master_records;
-    private ArrayList<Record> final_filtered_records;
+    private ArrayList<TaskRecord> static_filter_records;
+    private ArrayList<TaskRecord> master_records;
+    private ArrayList<TaskRecord> final_filtered_records;
     private TaskNameFilter task_name_filter;
+    private static TaskTypeAdapter instance;
 
-    public TaskTypeAdapter() {
+    private TaskTypeAdapter() {
         static_filter_records = new ArrayList<>(100);
         master_records = new ArrayList<>(100);
     }
+
+    public static TaskTypeAdapter getInstance() {
+        if (instance == null) {
+            instance = new TaskTypeAdapter();
+        }
+        return instance;
+    }
+
 
     @Override
     public int getCount() {
@@ -52,25 +61,44 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
         Context context = AppObjectRepository.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View list_content_view = inflater.inflate(R.layout.listtextview, null);
-        ((TextView) list_content_view.findViewById(R.id.list_text_view)).setText(final_filtered_records.get(i).taskname);
+        ((TextView) list_content_view.findViewById(R.id.list_text_view)).setText(final_filtered_records.get(i).ins_name);
         return list_content_view;
     }
 
+    public List<TaskRecord> getTaskRecords() {
+        return this.final_filtered_records;
+    }
+
+
     public void refreshData(int datekey) {
-        String sql = "SELECT distinct name,task_id,sys_class_name,status_code FROM opswise_master WHERE datekey = %d";
+        String sql = "SELECT \n" +
+                "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by" +
+                " FROM opswise_master;";
         DatabaseHandler handler = new DatabaseHandler();
         Cursor cur = handler.executeQuery(String.format(sql, datekey), null);
-        master_records.clear();
-        for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
-            master_records.add(new Record(cur.getString(0), cur.getString(1), cur.getString(2), cur.getInt(3)));
-        }
-        cur.close();
+        this.buildMasterArrayList(cur);
         generateFilteredRecords();
     }
 
+
+
+    private void buildMasterArrayList(Cursor cur) {
+        master_records.clear();
+        for (cur.moveToFirst(); !cur.isAfterLast(); cur.moveToNext()) {
+            TaskRecord record = new TaskRecord(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3));
+            record.setMainBlock(cur.getString(4),cur.getString(5),cur.getString(6),cur.getString(7));
+            record.setTimeBlock(cur.getString(8), cur.getString(9), cur.getString(10), cur.getString(11));
+            record.setRetryBlock(cur.getString(12), cur.getString(13), cur.getString(14), cur.getString(15));
+            record.setUserBlock(cur.getString(16), cur.getString(17), cur.getString(18), cur.getString(19));
+            master_records.add(record);
+        }
+        cur.close();
+    }
+
+
     public  void generateFilteredRecords() {
         static_filter_records.clear();
-        for (Record record : master_records) {
+        for (TaskRecord record : master_records) {
             if (doesRecordQualify(record)) {
                 static_filter_records.add(record);
             }
@@ -78,26 +106,12 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
         final_filtered_records = static_filter_records;
     }
 
-    private boolean doesRecordQualify(Record record) {
+    private boolean doesRecordQualify(TaskRecord record) {
         TaskFilterModel model = TaskFilterModel.getInstance();
         ArrayList<String> sel_task_types = model.getSelectedTaskTypes();
         ArrayList<Integer> sel_status_types = model.getSelectedStatusTypes();
         return sel_task_types.contains(record.sys_class_name)
-                && sel_status_types.contains(record.status_code);
-
-    }
-
-
-    private class Record {
-        String taskname, sys_id, sys_class_name;
-        int status_code;
-
-        public Record(String taskname, String sys_id, String sys_class_name, int status_code) {
-            this.taskname = taskname.toLowerCase();
-            this.sys_id = sys_id;
-            this.sys_class_name = sys_class_name;
-            this.status_code = status_code;
-        }
+                && sel_status_types.contains(Integer.parseInt(record.status_code));
 
     }
 
@@ -122,9 +136,9 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
                }
             }
             else {
-                List<Record> textFilteredResult = new ArrayList<>();
-                for ( Record record : static_filter_records) {
-                    if (record.taskname.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                List<TaskRecord> textFilteredResult = new ArrayList<>();
+                for ( TaskRecord record : static_filter_records) {
+                    if (record.ins_name.toLowerCase().contains(constraint.toString().toLowerCase())) {
                         textFilteredResult.add(record);
                     }
                 }
@@ -136,7 +150,7 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
 
            @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                   final_filtered_records = (ArrayList<Record>)filterResults.values;
+                   final_filtered_records = (ArrayList<TaskRecord>)filterResults.values;
                    notifyDataSetChanged();
             }
         }

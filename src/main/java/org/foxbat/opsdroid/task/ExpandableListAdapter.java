@@ -1,4 +1,4 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.task;
 
 import android.content.Context;
 import android.view.LayoutInflater;

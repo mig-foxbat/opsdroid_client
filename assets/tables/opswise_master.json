@@ -1,6 +1,7 @@
 {
     "ls_enabled":"boolean",
-    "name":"text",
+    "task_name":"text",
+    "ins_name":"text",
     "retry_indefinitely":"boolean",
     "retry_interval":"int",
     "retry_maximum":"int",

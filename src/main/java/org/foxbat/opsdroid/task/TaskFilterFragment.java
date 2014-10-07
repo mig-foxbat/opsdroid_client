@@ -1,4 +1,4 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.task;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.*;
 import org.foxbat.opsdroid.R;
 import org.foxbat.opsdroid.model.TaskFilterModel;
+import org.foxbat.opsdroid.task.ExpandableListAdapter;
 
 /**
  * Created by chlr on 10/3/14.
  */
 public class TaskFilterFragment extends Fragment {
 
-    org.foxbat.opsdroid.ExpandableListAdapter adapter;
+    org.foxbat.opsdroid.task.ExpandableListAdapter adapter;
     TaskFilterModel task_filter_model;
 
 
@@ -38,7 +39,7 @@ public class TaskFilterFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.taskfiltersettings,container,false);
         final ExpandableListView explist = (ExpandableListView)view.findViewById(R.id.exp_list);
-        adapter = new org.foxbat.opsdroid.ExpandableListAdapter();
+        adapter = new ExpandableListAdapter();
         explist.setAdapter(adapter);
         explist.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override

@@ -1,5 +1,6 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.task;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,7 +9,10 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
 import android.widget.EditText;
+import android.widget.ListView;
+import org.foxbat.opsdroid.OpsListFragment;
 import org.foxbat.opsdroid.R;
+import org.foxbat.opsdroid.taskdetail.TaskDetailActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,13 +28,11 @@ public class TaskFragment extends OpsListFragment {
     public void onCreate(Bundle savedInstance) {
 
         super.onCreate(savedInstance);
-        adapter = new TaskTypeAdapter();
+        adapter =  TaskTypeAdapter.getInstance();
         SharedPreferences perfs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         int datekey = perfs.getInt("datekey",Integer.parseInt(new SimpleDateFormat("yyyyMMdd").format(new Date())));
         adapter.refreshData(datekey);
         this.setListAdapter(adapter);
-        Log.v(this.getClass().getName(),"checkpoint1");
-
     }
 
     @Override
@@ -73,6 +75,17 @@ public class TaskFragment extends OpsListFragment {
         adapter.refreshData(datekey);
         adapter.notifyDataSetChanged();
     }
+
+
+    @Override
+    public void onListItemClick(ListView lv, View v, int position, long id) {
+        Log.v(this.getClass().getName(),"List Item Click detected");
+        Intent intent = new Intent(this.getActivity(), TaskDetailActivity.class);
+
+
+        startActivity(intent);
+    }
+
 
 
 
