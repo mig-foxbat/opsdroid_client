@@ -9,7 +9,7 @@ public class TaskRecord {
     public String task_name,summary,task_ref_count,status_code;
     public String queued_time,start_time,end_time,duration;
     public String retry_interval,retry_maximum,retry_indefinitely,attempt_count;
-    public String sys_updated_by,sys_created_by,execution_user,invoked_by;
+    public String sys_updated_by,sys_created_by,execution_user,invoked_by,agent;
 
 
     public TaskRecord(String ins_name, String sys_id, String task_id, String sys_class_name) {
@@ -42,11 +42,12 @@ public class TaskRecord {
         this.attempt_count = attempt_count;
     }
 
-    public void setUserBlock(String sys_updated_by,String sys_created_by, String execution_user,String invoked_by) {
+    public void setUserBlock(String sys_updated_by,String sys_created_by, String execution_user,String invoked_by,String agent) {
         this.sys_updated_by = sys_updated_by;
         this.sys_created_by = sys_created_by;
         this.execution_user = execution_user;
         this.invoked_by = invoked_by;
+        this.agent = agent;
     }
 
 

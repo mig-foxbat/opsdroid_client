@@ -37,6 +37,7 @@ public class TaskDetailGeneralTab extends Fragment {
         ((TextView)v.findViewById(R.id.task_sys_created)).setText(record.sys_created_by);
         ((TextView)v.findViewById(R.id.task_execution_user)).setText(record.execution_user);
         ((TextView)v.findViewById(R.id.task_invoked_by)).setText(record.invoked_by);
+        ((TextView)v.findViewById(R.id.task_agent)).setText(record.agent);
         return v;
     }
 }

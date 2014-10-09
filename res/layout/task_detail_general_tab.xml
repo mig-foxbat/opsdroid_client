@@ -369,6 +369,26 @@
                     android:layout_weight="1"/>
         </TableRow>
 
+        <TableRow
+                android:id="@+id/table_row_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/task_agent_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Agent"/>
+
+            <TextView
+                    android:id="@+id/task_agent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
     </TableLayout>
 
 </ScrollView>

@@ -16,6 +16,7 @@ public class TaskDetailMainFragment extends Fragment {
 
     int record_id;
 
+
     public TaskDetailMainFragment(int record_id) {
         this.record_id = record_id;
     }
@@ -29,13 +30,13 @@ public class TaskDetailMainFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("position",record_id);
         tabhost.addTab(
-                tabhost.newTabSpec("tab1").setIndicator("General", null),
+                tabhost.newTabSpec("tab1").setIndicator("general", null),
                 TaskDetailGeneralTab.class, bundle);
         tabhost.addTab(
-                tabhost.newTabSpec("tab2").setIndicator("STD-out/err", null),
-                TaskDetailGeneralTab.class, bundle);
+                tabhost.newTabSpec("tab2").setIndicator("log", null),
+                TaskDetailLogTab.class, bundle);
         tabhost.addTab(
-                tabhost.newTabSpec("tab3").setIndicator("History", null),
+                tabhost.newTabSpec("tab3").setIndicator("history", null),
                 TaskDetailGeneralTab.class, bundle);
         return v;
     }

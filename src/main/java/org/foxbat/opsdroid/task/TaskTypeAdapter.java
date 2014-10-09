@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 /**
  * Created by chlr on 10/1/14.
  */
@@ -27,10 +28,20 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
     private ArrayList<TaskRecord> final_filtered_records;
     private TaskNameFilter task_name_filter;
     private static TaskTypeAdapter instance;
+    private static Context context;
 
     private TaskTypeAdapter() {
         static_filter_records = new ArrayList<>(100);
         master_records = new ArrayList<>(100);
+    }
+
+    public static TaskTypeAdapter getInstance(Context context) {
+        TaskTypeAdapter.context = context;
+        if (instance == null) {
+            instance = new TaskTypeAdapter();
+        }
+        return instance;
+
     }
 
     public static TaskTypeAdapter getInstance() {
@@ -39,7 +50,6 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
         }
         return instance;
     }
-
 
     @Override
     public int getCount() {
@@ -72,7 +82,7 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
 
     public void refreshData(int datekey) {
         String sql = "SELECT \n" +
-                "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by" +
+                "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by,agent" +
                 " FROM opswise_master;";
         DatabaseHandler handler = new DatabaseHandler();
         Cursor cur = handler.executeQuery(String.format(sql, datekey), null);
@@ -89,7 +99,7 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
             record.setMainBlock(cur.getString(4),cur.getString(5),cur.getString(6),cur.getString(7));
             record.setTimeBlock(cur.getString(8), cur.getString(9), cur.getString(10), cur.getString(11));
             record.setRetryBlock(cur.getString(12), cur.getString(13), cur.getString(14), cur.getString(15));
-            record.setUserBlock(cur.getString(16), cur.getString(17), cur.getString(18), cur.getString(19));
+            record.setUserBlock(cur.getString(16), cur.getString(17), cur.getString(18), cur.getString(19),cur.getString(20));
             master_records.add(record);
         }
         cur.close();
