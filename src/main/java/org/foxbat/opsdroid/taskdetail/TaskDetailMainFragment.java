@@ -37,7 +37,7 @@ public class TaskDetailMainFragment extends Fragment {
                 TaskDetailLogTab.class, bundle);
         tabhost.addTab(
                 tabhost.newTabSpec("tab3").setIndicator("history", null),
-                TaskDetailGeneralTab.class, bundle);
+                TaskDetailHistoryFragment.class, bundle);
         return v;
     }
 }

@@ -47,6 +47,15 @@ public class UrlSynthesizer {
         return url.toString();
     }
 
+    public String task_history(String task_id) {
+        StringBuilder url = new StringBuilder();
+        url.append(baseurl);
+        url.append("tasks/history/");
+        url.append(task_id);
+        return url.toString();
+    }
+
+
     public String task_run_log(String agent,String sys_id) {
         StringBuilder url = new StringBuilder();
         url.append(baseurl);
