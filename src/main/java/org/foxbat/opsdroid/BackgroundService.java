@@ -19,7 +19,6 @@ public class BackgroundService extends IntentService {
         super("BackgroundService");
     }
 
-
     @Override
     protected void onHandleIntent(Intent intent) {
         int datekey = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));

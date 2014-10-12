@@ -5,10 +5,7 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.TextView;
+import android.widget.*;
 import org.foxbat.opsdroid.R;
 import org.foxbat.opsdroid.model.DatabaseHandler;
 import org.foxbat.opsdroid.model.TaskFilterModel;
@@ -29,6 +26,29 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
     private TaskNameFilter task_name_filter;
     private static TaskTypeAdapter instance;
     private static Context context;
+
+    enum task_type  {
+        ops_task_application_control
+        ,ops_task_email
+        ,ops_task_file_monitor
+        ,ops_task_ftp
+        ,ops_task_ftp_file_monitor
+        ,ops_task_indesca
+        ,ops_task_manual
+        ,ops_task_monitor
+        ,ops_task_run_criteria
+        ,ops_task_sap
+        ,ops_task_sleep
+        ,ops_task_sql
+        ,ops_task_stored_proc
+        ,ops_task_system_monitor
+        ,ops_task_to_exclusive
+        ,ops_task_to_resource
+        ,ops_task_unix
+        ,ops_task_windows
+        ,ops_task_workflow
+        ,ops_task_zos
+    };
 
     private TaskTypeAdapter() {
         static_filter_records = new ArrayList<>(100);
@@ -68,16 +88,34 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        Context context = AppObjectRepository.getContext();
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View list_content_view = inflater.inflate(R.layout.listtextview, null);
-        ((TextView) list_content_view.findViewById(R.id.list_text_view)).setText(final_filtered_records.get(i).ins_name);
-        return list_content_view;
+        if (view ==  null) {
+            Context context = AppObjectRepository.getContext();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.list_image_view, null);
+        }
+        ((ImageView) view.findViewById(R.id.image)).setImageResource(getDrawableResource(task_type.valueOf(final_filtered_records.get(i).sys_class_name)));
+        ((TextView) view.findViewById(R.id.list_text_view)).setText(final_filtered_records.get(i).ins_name);
+        return view;
     }
 
     public List<TaskRecord> getTaskRecords() {
         return this.final_filtered_records;
     }
+
+
+    private int getDrawableResource(task_type type) {
+        switch (type) {
+            case ops_task_unix:
+                return R.drawable.unix;
+            case ops_task_workflow:
+                return R.drawable.workflow;
+            case ops_task_monitor:
+                return R.drawable.monitor;
+            default:
+                return R.drawable.others;
+        }
+    }
+
 
 
     public void refreshData(int datekey) {

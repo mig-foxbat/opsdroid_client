@@ -1,22 +1,17 @@
 package org.foxbat.opsdroid.taskdetail;
 
-import android.content.Context;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import org.foxbat.opsdroid.R;
-import org.foxbat.opsdroid.utils.AppObjectRepository;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by chlr on 10/10/14.
@@ -82,14 +77,14 @@ public class TaskDetailHistoryAdapter extends BaseAdapter {
             try {
                 JSONObject json = json_arr.getJSONObject(i);
                 list.add(new TaskHistoryRecord(json.getInt("task_ref_count"),json.getString("queued_time"),json.getString("start_time"),json.getString("end_time"),json.getString("duration")));
+                Collections.sort(list,new HistoryRecordComparator());
+                this.notifyDataSetChanged();
             }
             catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
-
-
 
 
     private class TaskHistoryRecord {
@@ -107,5 +102,15 @@ public class TaskDetailHistoryAdapter extends BaseAdapter {
 
 
     }
+
+
+    private class HistoryRecordComparator implements Comparator<TaskHistoryRecord> {
+
+        @Override
+        public int compare(TaskHistoryRecord taskHistoryRecord, TaskHistoryRecord taskHistoryRecord2) {
+            return taskHistoryRecord.task_ref_count - taskHistoryRecord.task_ref_count;
+        }
+    }
+
 
 }

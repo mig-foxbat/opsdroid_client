@@ -4,7 +4,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:paddingLeft="8dp"
-              android:paddingRight="8dp">
+              android:paddingRight="8dp"
+              android:transformPivotY="0sp">
     <ListView android:id="@id/android:list"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -18,16 +19,17 @@
                   android:paddingRight="8dp"
                   android:layout_weight="0.1"
                   android:id="@+id/status_widget_container">
-        <Spinner
-                android:id="@+id/task_status_list"
+        <EditText
+                android:id="@+id/triggernamefilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
-        <Button
+                android:layout_weight="1.0"
+                android:lines="1"
+                android:hint="Filter"/>
+        <Button android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Refresh"
-                android:layout_weight="0.1"/>
+                android:id="@+id/trigger_refresh"
+                android:text="Refresh"/>
     </LinearLayout>
 
 </LinearLayout>

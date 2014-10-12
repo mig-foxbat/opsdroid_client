@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/tableLayout1"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent" >
+
+        <TableRow
+                android:id="@+id/table_row_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_name_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Trigger Name"/>
+
+            <TextView
+                    android:id="@+id/trigger_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_taskname_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Task Name"/>
+
+            <TextView
+                    android:id="@+id/trigger_taskname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_version_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Version"/>
+
+            <TextView
+                    android:id="@+id/trigger_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_enabled_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Enabled"/>
+
+            <TextView
+                    android:id="@+id/trigger_enabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_calendar_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Calendar"/>
+
+            <TextView
+                    android:id="@+id/trigger_calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_skip_active_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Skip Active"/>
+
+            <TextView
+                    android:id="@+id/trigger_skip_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_next_scheduled_time_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Next Schedule"/>
+            <TextView
+                    android:id="@+id/trigger_next_scheduled_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_sys_created_by_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Created by"/>
+            <TextView
+                    android:id="@+id/trigger_sys_created_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:id="@+id/table_row_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_sys_created_on_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Created on"/>
+
+            <TextView
+                    android:id="@+id/trigger_sys_created_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_sys_updated_by_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Updated by"/>
+
+            <TextView
+                    android:id="@+id/trigger_sys_updated_by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+        <TableRow
+                android:id="@+id/table_row_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/trigger_sys_updated_on_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Updated on"/>
+
+            <TextView
+                    android:id="@+id/trigger_sys_updated_on"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+        </TableRow>
+    </TableLayout>
+</ScrollView>

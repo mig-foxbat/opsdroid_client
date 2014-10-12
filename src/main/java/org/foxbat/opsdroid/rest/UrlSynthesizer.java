@@ -55,7 +55,6 @@ public class UrlSynthesizer {
         return url.toString();
     }
 
-
     public String task_run_log(String agent,String sys_id) {
         StringBuilder url = new StringBuilder();
         url.append(baseurl);
@@ -65,5 +64,23 @@ public class UrlSynthesizer {
         url.append(sys_id);
         return url.toString();
     }
+
+    public String trigger_list() {
+        StringBuilder url = new StringBuilder();
+        url.append(baseurl);
+        url.append("triggers/list/");
+        return url.toString();
+    }
+
+    public String trigger_detail(String sys_class,String trigger_id) {
+        StringBuilder url = new StringBuilder();
+        url.append(baseurl);
+        url.append("triggers/");
+        url.append(sys_class+"/");
+        url.append(trigger_id+"/");
+        return url.toString();
+    }
+
+
 
 }

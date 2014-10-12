@@ -34,8 +34,6 @@ public class SettingsActivity extends PreferenceActivity {
 
         @Override
         public void onSharedPreferenceChanged(SharedPreferences preferences, String s) {
-            Log.v("Test 1","Checkpoint 1");
-            Log.v(this.getClass().getName(),s);
         }
     }
 

@@ -19,7 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 
-
 /**
  * Created by chlr on 10/10/14.
  */
@@ -31,42 +30,37 @@ public class TaskDetailHistoryFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.task_detail_history_fragment,container,false);
-        return view;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        record =  TaskTypeAdapter.getInstance(this.getActivity()).getTaskRecord(this.getArguments().getInt("position",0));
+        View view = inflater.inflate(R.layout.task_detail_history_fragment, container, false);
+        record = TaskTypeAdapter.getInstance(this.getActivity()).getTaskRecord(this.getArguments().getInt("position", 0));
         adapter = TaskDetailHistoryAdapter.getInstance(this);
         this.setListAdapter(adapter);
         String url = new UrlSynthesizer().task_history(record.task_id);
 
-        if(!isDataCached(url)) {
+        if (!isDataCached(url)) {
             pd = new ProgressDialog(this.getActivity());
             pd.setIndeterminate(true);
             pd.setTitle("Please wait");
             pd.setMessage("Fetching Data");
             pd.show();
             this.makeRequest(new UrlSynthesizer().task_history(record.task_id));
-        }
-
-        else {
+        } else {
             try {
                 String data = new String(AppManager.getInstance().getRequestQueue().getCache().get(url).data);
                 JSONArray json_arr = new JSONArray(data);
                 adapter.refreshData(json_arr);
                 adapter.notifyDataSetChanged();
-            }
-            catch (JSONException e) {
+            } catch (JSONException e) {
                 Toast.makeText(TaskDetailHistoryFragment.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }
-
+        return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
 
     private boolean isDataCached(String url) {
@@ -77,8 +71,6 @@ public class TaskDetailHistoryFragment extends ListFragment {
         }
     }
 
-
-
     private void makeRequest(String url) {
 
         JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
@@ -87,7 +79,9 @@ public class TaskDetailHistoryFragment extends ListFragment {
                 adapter = TaskDetailHistoryAdapter.getInstance(TaskDetailHistoryFragment.this);
                 adapter.refreshData(json_arr);
                 adapter.notifyDataSetChanged();
-                if (pd != null ) { pd.dismiss(); }
+                if (pd != null) {
+                    pd.dismiss();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -101,7 +95,6 @@ public class TaskDetailHistoryFragment extends ListFragment {
         AppManager.getInstance().addToRequestQueue(req);
 
     }
-
 
 
 }

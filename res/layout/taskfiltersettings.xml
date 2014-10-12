@@ -4,7 +4,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#000000">
+        android:background="#000000"
+        android:transformPivotY="0dp">
    <ExpandableListView
            android:id="@+id/exp_list"
            android:layout_height="match_parent"

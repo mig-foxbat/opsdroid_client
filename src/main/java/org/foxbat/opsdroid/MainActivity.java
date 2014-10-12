@@ -13,6 +13,7 @@ import android.content.Intent;
 import org.foxbat.opsdroid.rest.UrlSynthesizer;
 import org.foxbat.opsdroid.task.TaskFilterFragment;
 import org.foxbat.opsdroid.task.TaskFragment;
+import org.foxbat.opsdroid.trigger.TriggerFragment;
 import org.foxbat.opsdroid.utils.AppObjectRepository;
 
 
@@ -37,14 +38,12 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
         fraglist.add(new TaskFragment());
         fraglist.add(new TriggerFragment());
-        fraglist.add(new ReportFragment());
+     //   fraglist.add(new ReportFragment());
 
         ActionBar actionbar = this.getActionBar();
         actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionbar.addTab(actionbar.newTab().setText("Task").setTabListener(this),true);
         actionbar.addTab(actionbar.newTab().setText("Trigger").setTabListener(this));
-        actionbar.addTab(actionbar.newTab().setText("Report").setTabListener(this));
-
     }
 
     @Override
@@ -94,24 +93,26 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
     private void changeFragment(int i) {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-     //   transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
         transaction.replace(R.id.fragment_holder,fraglist.get(i));
         transaction.commit();
      }
 
     private void initiateRefresh() {
-        int datekey = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
-        String url = new UrlSynthesizer().task_date(datekey);
+        int curr_date = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
+        int datekey = PreferenceManager.getDefaultSharedPreferences(this).getInt("datekey",curr_date);
         new RefreshData().execute(datekey);
     }
 
     private void showSettingsFragment() {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+       // transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
             transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_holder,new TaskFilterFragment());
         transaction.commit();
     }
+
+
 
 
 

@@ -16,6 +16,8 @@
         </activity>
         <activity android:name="org.foxbat.opsdroid.SettingsActivity"/>
         <activity android:name=".taskdetail.TaskDetailActivity"/>
+        <activity android:name=".trigger.CronDetailFragment"/>
+        <activity android:name=".trigger.TriggerDetailActivity"/>
         <service android:name="org.foxbat.opsdroid.BackgroundService"/>
     </application>
 </manifest>
