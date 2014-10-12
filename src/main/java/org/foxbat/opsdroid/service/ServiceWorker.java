@@ -1,4 +1,4 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.service;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -13,9 +13,14 @@ import org.json.JSONArray;
  */
 public class ServiceWorker {
 
+    private Context context;
+
+    public ServiceWorker(Context context) {
+        this.context = context;
+    }
 
     public void refreshDataForDate(int datekey) {
-        ConnectivityManager cm = (ConnectivityManager)AppObjectRepository.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager)this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if(cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected() == true) {
             JSONArray arr = (new RequestDispatcher()).getJsonArrayResponse(new UrlSynthesizer().task_date(datekey));
             OpswiseMasterManager ops_master_mgr = new OpswiseMasterManager();
@@ -23,9 +28,5 @@ public class ServiceWorker {
             ops_master_mgr.populateTable(arr);
         }
     }
-
-
-
-
 
 }

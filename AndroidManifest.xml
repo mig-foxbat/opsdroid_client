@@ -18,6 +18,6 @@
         <activity android:name=".taskdetail.TaskDetailActivity"/>
         <activity android:name=".trigger.CronDetailFragment"/>
         <activity android:name=".trigger.TriggerDetailActivity"/>
-        <service android:name="org.foxbat.opsdroid.BackgroundService"/>
+        <service android:name=".service.BackgroundService"/>
     </application>
 </manifest>

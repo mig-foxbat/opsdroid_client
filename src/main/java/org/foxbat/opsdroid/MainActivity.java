@@ -4,13 +4,15 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.content.Intent;
-import org.foxbat.opsdroid.rest.UrlSynthesizer;
+import android.widget.Toast;
+import org.foxbat.opsdroid.service.ServiceWorker;
 import org.foxbat.opsdroid.task.TaskFilterFragment;
 import org.foxbat.opsdroid.task.TaskFragment;
 import org.foxbat.opsdroid.trigger.TriggerFragment;
@@ -73,11 +75,13 @@ public class MainActivity extends Activity implements ActionBar.TabListener
                 Intent intent = new Intent(this,SettingsActivity.class);
                 this.startActivity(intent);
                 return true;
-            case R.id.action_search:
-                Log.v(this.getClass().getName(),"Search Bar Hit detected");
-                return true;
+//            case R.id.action_search:
+//                Log.v(this.getClass().getName(),"Search Bar Hit detected");
+//                return true;
             case R.id.action_refresh:
                 Log.v(this.getClass().getName(),"Refresh detected");
+                SharedPreferences perf = PreferenceManager.getDefaultSharedPreferences(this);
+                Log.v(this.getClass().getName(),String.valueOf(perf.getInt("datekey",0)));
                 initiateRefresh();
                 return true;
             case R.id.action_calendar:
@@ -93,7 +97,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
     private void changeFragment(int i) {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+    //    transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
         transaction.replace(R.id.fragment_holder,fraglist.get(i));
         transaction.commit();
      }
@@ -106,7 +110,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
     private void showSettingsFragment() {
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
-       // transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
+        transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
             transaction.addToBackStack(null);
         transaction.replace(R.id.fragment_holder,new TaskFilterFragment());
         transaction.commit();
@@ -142,7 +146,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
     private class RefreshData extends AsyncTask<Integer,Void,Void> {
         @Override
         protected Void doInBackground(Integer... datekey) {
-            ServiceWorker worker = new ServiceWorker();
+            ServiceWorker worker = new ServiceWorker(MainActivity.this);
             worker.refreshDataForDate(datekey[0]);
             return null;
         }
@@ -151,6 +155,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
         protected void onPostExecute(Void a) {
             OpsListFragment frag = fraglist.get(getActionBar().getSelectedTab().getPosition());
             frag.refreshData();
+            Toast.makeText(MainActivity.this, "Data Refresh", Toast.LENGTH_LONG).show();
         }
     }
 

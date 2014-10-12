@@ -1,4 +1,4 @@
-package org.foxbat.opsdroid;
+package org.foxbat.opsdroid.service;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -22,6 +22,6 @@ public class BackgroundService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         int datekey = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
-        new ServiceWorker().refreshDataForDate(datekey);
+        new ServiceWorker(this).refreshDataForDate(datekey);
     }
 }

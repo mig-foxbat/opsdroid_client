@@ -152,7 +152,14 @@ public class TriggerDetailFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError e) {
+                try {
                 Toast.makeText(TriggerDetailFragment.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                if (pd != null) {
+                    pd.dismiss();
+                } }
+                catch (NullPointerException exp) {
+                    exp.printStackTrace();
+                }
             }
         }
 

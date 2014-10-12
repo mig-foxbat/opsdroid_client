@@ -2,6 +2,7 @@ package org.foxbat.opsdroid.taskdetail;
 
 
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -121,6 +122,33 @@ public class TaskDetailLogTab extends Fragment {
     }
 
 
+
+//    private class LogFileHandler extends AsyncTask<String,Void,JSONObject>
+//    {
+//
+//        @Override
+//        protected JSONObject doInBackground(String... urls) {
+//            JSONObject json = new JSONObject();
+//            try {
+//                json.put("stderr", "");
+//                json.put("stdout", "");
+//                String data = new String(AppManager.getInstance().getRequestQueue().getCache().get(urls[0]).data);
+//                JSONObject json = new JSONObject(data);
+//                return json;
+//            } catch (JSONException e) {
+//                return json;
+//            }
+//
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String str) {
+//
+//        }
+//
+//    }
+
+
     private boolean isDataCached(String url) {
         try {
             return (AppManager.getInstance().getRequestQueue().getCache().get(url).data == null) ? false : true;
@@ -155,6 +183,7 @@ public class TaskDetailLogTab extends Fragment {
                         tv.setText(json.getString("stdout"));
                     } catch (JSONException e) {
                         Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
                     }
                     ;
                 }
@@ -163,7 +192,13 @@ public class TaskDetailLogTab extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), volleyError.getMessage(), Toast.LENGTH_LONG).show();
+               try {
+                   Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), (volleyError.getMessage() == null ? "Network Error" : volleyError.getMessage()), Toast.LENGTH_LONG).show();
+                   if (bar != null) bar.dismiss();
+               }
+               catch (NullPointerException e) {
+                   e.printStackTrace();
+               }
             }
         });
         Log.v(this.getClass().getName(), url);

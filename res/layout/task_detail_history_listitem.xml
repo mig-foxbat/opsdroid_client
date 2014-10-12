@@ -2,7 +2,10 @@
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="fill_parent"
-             android:layout_height="fill_parent" >
+             android:layout_height="fill_parent"
+             android:background="@android:color/white"
+             android:clickable="true"
+             android:focusable="true">
     <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -11,6 +14,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:textColor="@android:color/black"
                 android:padding="5dp"
                 android:text="Queue Time"/>
 
@@ -18,6 +22,7 @@
                 android:id="@+id/hist_queue_time"
                 android:layout_weight="0.5"
                 android:layout_width="fill_parent"
+                android:textColor="@android:color/black"
                 android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow
@@ -28,6 +33,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
+                android:textColor="@android:color/black"
                 android:padding="5dp"
                 android:text="Start Time"/>
 
@@ -36,6 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.5"
                 android:layout_width="fill_parent"
+                android:textColor="@android:color/black"
                 android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow
@@ -46,6 +53,7 @@
                 android:layout_weight="0.5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:padding="5dp"
                 android:text="End Time"/>
         <TextView
@@ -53,6 +61,7 @@
                 android:layout_weight="0.5"
                 android:layout_gravity="center"
                 android:layout_width="fill_parent"
+                android:textColor="@android:color/black"
                 android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow
@@ -63,6 +72,7 @@
                 android:layout_weight="0.5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:padding="5dp"
                 android:text="Duration"/>
         <TextView
@@ -70,6 +80,7 @@
                 android:layout_weight="0.5"
                 android:layout_gravity="center"
                 android:layout_width="fill_parent"
+                android:textColor="@android:color/black"
                 android:layout_height="wrap_content"/>
     </TableRow>
 </TableLayout>

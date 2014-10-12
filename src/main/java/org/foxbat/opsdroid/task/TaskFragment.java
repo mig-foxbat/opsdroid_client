@@ -74,6 +74,7 @@ public class TaskFragment extends OpsListFragment {
     public void refreshData() {
         SharedPreferences perfs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         int datekey = perfs.getInt("datekey",Integer.parseInt(new SimpleDateFormat("yyyyMMdd").format(new Date())));
+
         adapter.refreshData(datekey);
         adapter.notifyDataSetChanged();
     }

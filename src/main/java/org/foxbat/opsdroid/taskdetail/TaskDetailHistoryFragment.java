@@ -32,7 +32,7 @@ public class TaskDetailHistoryFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_detail_history_fragment, container, false);
         record = TaskTypeAdapter.getInstance(this.getActivity()).getTaskRecord(this.getArguments().getInt("position", 0));
-        adapter = TaskDetailHistoryAdapter.getInstance(this);
+        adapter = TaskDetailHistoryAdapter.getInstance(this.getActivity());
         this.setListAdapter(adapter);
         String url = new UrlSynthesizer().task_history(record.task_id);
 
@@ -76,9 +76,8 @@ public class TaskDetailHistoryFragment extends ListFragment {
         JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray json_arr) {
-                adapter = TaskDetailHistoryAdapter.getInstance(TaskDetailHistoryFragment.this);
+                adapter = TaskDetailHistoryAdapter.getInstance(TaskDetailHistoryFragment.this.getActivity());
                 adapter.refreshData(json_arr);
-                adapter.notifyDataSetChanged();
                 if (pd != null) {
                     pd.dismiss();
                 }
@@ -86,7 +85,14 @@ public class TaskDetailHistoryFragment extends ListFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError e) {
+              try {
                 Toast.makeText(TaskDetailHistoryFragment.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                if (pd != null) {
+                    pd.dismiss();
+                } }
+              catch (NullPointerException exp) {
+                  exp.printStackTrace();
+              }
             }
         }
 

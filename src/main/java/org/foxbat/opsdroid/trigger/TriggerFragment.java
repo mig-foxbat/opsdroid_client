@@ -69,18 +69,18 @@ public class TriggerFragment extends OpsListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.triggerfragment,container,false);
 
-        Button bu = (Button)view.findViewById(R.id.trigger_refresh);
-        bu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pd = new ProgressDialog(TriggerFragment.this.getActivity());
-                pd.setIndeterminate(true);
-                pd.setTitle("Please wait");
-                pd.setMessage("Fetching Data");
-                pd.show();
-                TriggerFragment.this.makeRequest(new UrlSynthesizer().trigger_list());
-            }
-        });
+//        Button bu = (Button)view.findViewById(R.id.trigger_refresh);
+//        bu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                pd = new ProgressDialog(TriggerFragment.this.getActivity());
+//                pd.setIndeterminate(true);
+//                pd.setTitle("Please wait");
+//                pd.setMessage("Fetching Data");
+//                pd.show();
+//                TriggerFragment.this.makeRequest(new UrlSynthesizer().trigger_list());
+//            }
+//        });
 
 
 
@@ -142,7 +142,15 @@ public class TriggerFragment extends OpsListFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError e) {
+                try {
                 Toast.makeText(TriggerFragment.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                if (pd != null) {
+                    pd.dismiss();
+                } }
+                catch (NullPointerException exp) {
+                    exp.printStackTrace();
+                }
+
             }
         }
 

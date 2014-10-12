@@ -1,5 +1,6 @@
 package org.foxbat.opsdroid.taskdetail;
 
+import android.content.Context;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import java.util.*;
 public class TaskDetailHistoryAdapter extends BaseAdapter {
 
     List<TaskHistoryRecord> list;
-    private static ListFragment fragment;
+    private static Context context;
     private static TaskDetailHistoryAdapter instance;
 
     private TaskDetailHistoryAdapter() {
@@ -33,8 +34,8 @@ public class TaskDetailHistoryAdapter extends BaseAdapter {
         return new TaskDetailHistoryAdapter();
     }
 
-    public static TaskDetailHistoryAdapter getInstance(ListFragment fragment) {
-        TaskDetailHistoryAdapter.fragment = fragment;
+    public static TaskDetailHistoryAdapter getInstance(Context context) {
+        TaskDetailHistoryAdapter.context = context;
         if (instance == null)
             instance = new TaskDetailHistoryAdapter();
         return new TaskDetailHistoryAdapter();
@@ -60,7 +61,7 @@ public class TaskDetailHistoryAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         if (view ==  null) {
-            LayoutInflater inflater = fragment.getLayoutInflater(null);
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view= inflater.inflate(R.layout.task_detail_history_listitem,viewGroup, false);
         }
         TaskHistoryRecord record  = list.get(i);

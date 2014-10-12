@@ -7,6 +7,7 @@
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:id="@+id/tableLayout1"
+                 android:background="@android:color/white"
                  android:layout_width="fill_parent"
                  android:layout_height="fill_parent" >
 
@@ -14,12 +15,14 @@
                 android:id="@+id/table_row_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_name_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Name"/>
@@ -28,6 +31,7 @@
                     android:id="@+id/task_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -35,12 +39,14 @@
                 android:id="@+id/table_row_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_type_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Type"/>
@@ -49,6 +55,7 @@
                     android:id="@+id/task_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -56,12 +63,14 @@
                 android:id="@+id/table_row_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/summary_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Summary"/>
@@ -70,6 +79,7 @@
                     android:id="@+id/task_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -77,12 +87,14 @@
                 android:id="@+id/table_row_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_ref_count_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Ref count"/>
@@ -91,6 +103,7 @@
                     android:id="@+id/task_ref_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -98,12 +111,14 @@
                 android:id="@+id/table_row_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_status_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Status"/>
@@ -112,6 +127,7 @@
                     android:id="@+id/task_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -119,12 +135,14 @@
                 android:id="@+id/table_row_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_queued_time_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Queued Time"/>
@@ -133,6 +151,7 @@
                     android:id="@+id/task_queued_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -140,12 +159,14 @@
                 android:id="@+id/table_row_7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_start_time_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task Start Time"/>
@@ -154,6 +175,7 @@
                     android:id="@+id/task_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -161,12 +183,14 @@
                 android:id="@+id/table_row_8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_end_time_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Task End Time"/>
@@ -175,6 +199,7 @@
                     android:id="@+id/task_end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -182,12 +207,14 @@
                 android:id="@+id/table_row_9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_duration_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Duration"/>
@@ -196,6 +223,7 @@
                     android:id="@+id/task_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -203,12 +231,14 @@
                 android:id="@+id/table_row_10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_retry_interval_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Retry Interval"/>
@@ -217,6 +247,7 @@
                     android:id="@+id/task_retry_interval"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -224,12 +255,14 @@
                 android:id="@+id/table_row_11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_retry_maximum_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Retry Maximum"/>
@@ -238,6 +271,7 @@
                     android:id="@+id/task_retry_maximum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -245,12 +279,14 @@
                 android:id="@+id/table_row_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_retry_indefinitely_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Retry Indefinitely"/>
@@ -259,6 +295,7 @@
                     android:id="@+id/task_retry_indefinitely"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -266,12 +303,14 @@
                 android:id="@+id/table_row_13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_attempt_count_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Attempt Count"/>
@@ -280,6 +319,7 @@
                     android:id="@+id/task_attempt_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -287,12 +327,14 @@
                 android:id="@+id/table_row_14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_sys_update_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="sys_updated"/>
@@ -301,6 +343,7 @@
                     android:id="@+id/task_sys_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -309,12 +352,14 @@
                 android:id="@+id/table_row_15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_sys_created_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="sys_created"/>
@@ -323,6 +368,7 @@
                     android:id="@+id/task_sys_created"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -330,12 +376,14 @@
                 android:id="@+id/table_row_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_execution_user_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Execution User"/>
@@ -344,6 +392,7 @@
                     android:id="@+id/task_execution_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -352,12 +401,14 @@
                 android:id="@+id/table_row_17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_invoked_by_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Invoked by"/>
@@ -366,6 +417,7 @@
                     android:id="@+id/task_invoked_by"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
 
@@ -373,12 +425,14 @@
                 android:id="@+id/table_row_18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border"
                 android:padding="5dip" >
             <TextView
                     android:id="@+id/task_agent_lable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
+                    android:textColor="@android:color/black"
                     android:gravity="left"
                     android:paddingRight="5dp"
                     android:text="Agent"/>
@@ -387,6 +441,7 @@
                     android:id="@+id/task_agent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
                     android:layout_weight="1"/>
         </TableRow>
     </TableLayout>

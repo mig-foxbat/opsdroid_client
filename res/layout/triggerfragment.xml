@@ -26,10 +26,6 @@
                 android:layout_weight="1.0"
                 android:lines="1"
                 android:hint="Filter"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/trigger_refresh"
-                android:text="Refresh"/>
     </LinearLayout>
 
 </LinearLayout>

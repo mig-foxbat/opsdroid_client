@@ -21,6 +21,11 @@ public class TaskDetailMainFragment extends Fragment {
         this.record_id = record_id;
     }
 
+    public TaskDetailMainFragment() {
+
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

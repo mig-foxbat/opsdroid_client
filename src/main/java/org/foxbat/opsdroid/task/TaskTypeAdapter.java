@@ -121,7 +121,7 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
     public void refreshData(int datekey) {
         String sql = "SELECT \n" +
                 "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by,agent" +
-                " FROM opswise_master;";
+                " FROM opswise_master where datekey = %d;";
         DatabaseHandler handler = new DatabaseHandler();
         Cursor cur = handler.executeQuery(String.format(sql, datekey), null);
         this.buildMasterArrayList(cur);
