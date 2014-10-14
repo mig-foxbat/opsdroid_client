@@ -29,14 +29,17 @@ import org.json.JSONObject;
 public class TaskDetailLogTab extends Fragment {
 
     String[] options = new String[]{"stdout", "stderr"};
+    String url;
     JSONObject json;
     TaskRecord record;
     ProgressDialog bar;
 
+
     @Override
-    public void onStart() {
-        super.onStart();
-        Spinner sp = (Spinner) this.getView().findViewById(R.id.spinner);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.task_detail_log_tab, container, false);
+        Spinner sp = (Spinner) v.findViewById(R.id.spinner);
+        sp.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_spinner_item, options));
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -69,8 +72,9 @@ public class TaskDetailLogTab extends Fragment {
         });
 
 
-        Button bu = (Button) this.getView().findViewById(R.id.refresh);
-        final String url = new UrlSynthesizer().task_run_log(record.agent, record.sys_id);
+        Button bu = (Button) v.findViewById(R.id.refresh);
+        record = TaskTypeAdapter.getInstance(this.getActivity()).getTaskRecord(this.getArguments().getInt("position", 0));
+        url = new UrlSynthesizer().task_run_log(record.agent, record.sys_id);
         bu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,75 +82,48 @@ public class TaskDetailLogTab extends Fragment {
             }
         });
 
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.task_detail_log_tab, container, false);
-        record = TaskTypeAdapter.getInstance(this.getActivity()).getTaskRecord(this.getArguments().getInt("position", 0));
-        final String url = new UrlSynthesizer().task_run_log(record.agent, record.sys_id);
-        Log.v(this.getClass().getName(), url);
-        Spinner sp = (Spinner) v.findViewById(R.id.spinner);
-        sp.setAdapter(new ArrayAdapter<>(this.getActivity(), android.R.layout.simple_spinner_item, options));
-        if (isDataCached(url)) {
-            String data = new String(AppManager.getInstance().getRequestQueue().getCache().get(url).data);
-            try {
-                this.json = new JSONObject(data);
-                TextView tv = (TextView) v.findViewById(R.id.content);
-                String stdx = (String) sp.getSelectedItem();
-                if (stdx.equalsIgnoreCase("stderr")) {
-                    try {
-                        tv.setText(json.getString("stderr"));
-                    } catch (JSONException e) {
-                        Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                    ;
-                } else {
-                    try {
-                        tv.setText(json.getString("stdout"));
-                    } catch (JSONException e) {
-                        Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                    ;
-                }
-
-            } catch (JSONException e) {
-                Toast.makeText(TaskDetailLogTab.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            }
-
-            return v;
-        }
-        makeRequest(url);
         return v;
     }
 
 
 
-//    private class LogFileHandler extends AsyncTask<String,Void,JSONObject>
-//    {
-//
-//        @Override
-//        protected JSONObject doInBackground(String... urls) {
-//            JSONObject json = new JSONObject();
-//            try {
-//                json.put("stderr", "");
-//                json.put("stdout", "");
-//                String data = new String(AppManager.getInstance().getRequestQueue().getCache().get(urls[0]).data);
-//                JSONObject json = new JSONObject(data);
-//                return json;
-//            } catch (JSONException e) {
-//                return json;
-//            }
-//
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String str) {
-//
-//        }
-//
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (isDataCached(url)) {
+            new LogFileHandler().execute(AppManager.getInstance().getRequestQueue().getCache().get(url).data);
+        }
+        else {
+            makeRequest(url);
+        }
+    }
+
+
+
+    private class LogFileHandler extends AsyncTask<byte[],Void,String>
+    {
+
+        @Override
+        protected String doInBackground(byte[]... rawdata) {
+                JSONObject json;
+            try {
+                Spinner sp = (Spinner) TaskDetailLogTab.this.getView().findViewById(R.id.spinner);
+                String stdx = (String) sp.getSelectedItem();
+                json = new JSONObject(new String(rawdata[0]));
+                return json.getString(stdx);
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+                return "";
+            }
+        }
+        @Override
+        protected void onPostExecute(String str) {
+            TextView tv = (TextView) TaskDetailLogTab.this.getView().findViewById(R.id.content);
+            tv.setText(str);
+        }
+
+    }
 
 
     private boolean isDataCached(String url) {

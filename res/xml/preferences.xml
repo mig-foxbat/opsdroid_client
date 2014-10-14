@@ -37,13 +37,14 @@
                 android:entries="@array/syncFrequency"
                 android:summary="Frequency in minutes"
                 android:entryValues="@array/syncFrequency"
+                android:defaultValue="15"
                 android:title="Frequency" />
         <MultiSelectListPreference
                 android:defaultValue="@array/empty_array"
                 android:enabled="true"
                 android:entries="@array/task_status_array"
                 android:entryValues="@array/task_status_array"
-                android:key="TargetList"
+                android:key="selected_status"
                 android:persistent="true"
                 android:summary="Status to be monitored"
                 android:title="Status" />

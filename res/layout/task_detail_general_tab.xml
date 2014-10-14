@@ -12,6 +12,31 @@
                  android:layout_height="fill_parent" >
 
         <TableRow
+                android:id="@+id/table_row_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:padding="5dip" >
+            <TextView
+                    android:id="@+id/ins_name_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textColor="@android:color/black"
+                    android:gravity="left"
+                    android:paddingRight="5dp"
+                    android:text="Instance Name"/>
+
+            <TextView
+                    android:id="@+id/ins_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"/>
+        </TableRow>
+
+
+        <TableRow
                 android:id="@+id/table_row_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

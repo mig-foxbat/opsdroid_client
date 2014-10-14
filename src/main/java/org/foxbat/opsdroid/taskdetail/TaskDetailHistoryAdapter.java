@@ -79,7 +79,6 @@ public class TaskDetailHistoryAdapter extends BaseAdapter {
                 JSONObject json = json_arr.getJSONObject(i);
                 list.add(new TaskHistoryRecord(json.getInt("task_ref_count"),json.getString("queued_time"),json.getString("start_time"),json.getString("end_time"),json.getString("duration")));
                 Collections.sort(list,new HistoryRecordComparator());
-                this.notifyDataSetChanged();
             }
             catch (JSONException e) {
                 e.printStackTrace();

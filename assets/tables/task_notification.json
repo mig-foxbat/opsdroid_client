@@ -1,0 +1,6 @@
+{
+    "sys_id":"text",
+    "task_name":"text",
+    "datekey":"int",
+    "notify_flag":"int"
+}

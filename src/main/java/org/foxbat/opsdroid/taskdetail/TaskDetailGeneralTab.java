@@ -20,6 +20,7 @@ public class TaskDetailGeneralTab extends Fragment {
         int position = bundle.getInt("position", 0);
         TaskRecord record = TaskTypeAdapter.getInstance().getTaskRecord(position);
         View v = inflater.inflate(R.layout.task_detail_general_tab, container, false);
+        ((TextView)v.findViewById(R.id.ins_name)).setText(record.ins_name);
         ((TextView)v.findViewById(R.id.task_name)).setText(record.task_name);
         ((TextView)v.findViewById(R.id.task_type)).setText(record.sys_class_name);
         ((TextView)v.findViewById(R.id.task_summary)).setText(record.summary);

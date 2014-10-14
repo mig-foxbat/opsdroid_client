@@ -76,8 +76,8 @@ public class TaskDetailHistoryFragment extends ListFragment {
         JsonArrayRequest req = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray json_arr) {
-                adapter = TaskDetailHistoryAdapter.getInstance(TaskDetailHistoryFragment.this.getActivity());
                 adapter.refreshData(json_arr);
+                adapter.notifyDataSetChanged();
                 if (pd != null) {
                     pd.dismiss();
                 }

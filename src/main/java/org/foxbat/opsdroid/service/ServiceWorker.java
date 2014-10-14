@@ -23,7 +23,7 @@ public class ServiceWorker {
         ConnectivityManager cm = (ConnectivityManager)this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if(cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected() == true) {
             JSONArray arr = (new RequestDispatcher()).getJsonArrayResponse(new UrlSynthesizer().task_date(datekey));
-            OpswiseMasterManager ops_master_mgr = new OpswiseMasterManager();
+            OpswiseMasterManager ops_master_mgr = new OpswiseMasterManager(context);
             ops_master_mgr.deleteDate(datekey);
             ops_master_mgr.populateTable(arr);
         }

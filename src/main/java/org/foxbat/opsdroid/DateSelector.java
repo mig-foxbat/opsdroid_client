@@ -39,7 +39,7 @@ public class DateSelector extends DialogFragment
             int year = Integer.parseInt(datekey_str.substring(0,4));
             int month = Integer.parseInt(datekey_str.substring(4,6));
             int day = Integer.parseInt(datekey_str.substring(6,8));
-            return new DatePickerDialog(getActivity(), this, year, month, day);
+            return new DatePickerDialog(getActivity(), this, year, month-1, day);
         }
     }
 
