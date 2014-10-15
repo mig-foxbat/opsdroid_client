@@ -160,6 +160,11 @@ public class TriggerFragment extends OpsListFragment {
 
     @Override
     public void refreshData() {
-
+        pd = new ProgressDialog(this.getActivity());
+        pd.setIndeterminate(true);
+        pd.setTitle("Please wait");
+        pd.setMessage("Fetching Data");
+        pd.show();
+        makeRequest(new UrlSynthesizer().trigger_list());
     }
 }

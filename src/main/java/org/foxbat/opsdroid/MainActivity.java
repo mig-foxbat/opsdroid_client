@@ -35,13 +35,12 @@ public class MainActivity extends Activity implements ActionBar.TabListener
     GestureDetector gdectector;
     GestureEventHandler ghandler;
     List<OpsListFragment> fraglist = new ArrayList<>(3);
+    private int current_position = 0;
 
     private void setUpActionBarTabs() {
 
         fraglist.add(new TaskFragment());
         fraglist.add(new TriggerFragment());
-     //   fraglist.add(new ReportFragment());
-
         ActionBar actionbar = this.getActionBar();
         actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionbar.addTab(actionbar.newTab().setText("Task").setTabListener(this),true);
@@ -96,6 +95,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
 
 
     private void changeFragment(int i) {
+        current_position = i;
         FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
     //    transaction.setCustomAnimations(R.anim.fragment_enter,R.anim.fragment_exit);
         transaction.replace(R.id.fragment_holder,fraglist.get(i));
@@ -103,9 +103,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener
      }
 
     private void initiateRefresh() {
-        int curr_date = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
-        int datekey = PreferenceManager.getDefaultSharedPreferences(this).getInt("datekey",curr_date);
-        new RefreshData().execute(datekey);
+        switch (current_position) {
+            case 0: {
+                int curr_date = Integer.parseInt((new SimpleDateFormat("yyyyMMdd")).format(new Date()));
+                int datekey = PreferenceManager.getDefaultSharedPreferences(this).getInt("datekey", curr_date);
+                new RefreshTaskData().execute(datekey);
+                break;
+            }
+            case 1 : {
+                fraglist.get(1).refreshData();
+                break;
+            }
+            default:
+                break;
+        }
     }
 
     private void showSettingsFragment() {
@@ -143,7 +154,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
     }
 
 
-    private class RefreshData extends AsyncTask<Integer,Void,Void> {
+    private class RefreshTaskData extends AsyncTask<Integer,Void,Void> {
         @Override
         protected Void doInBackground(Integer... datekey) {
             ServiceWorker worker = new ServiceWorker(MainActivity.this);
@@ -163,6 +174,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener
         Log.v(this.getClass().getName(),"Filter Settings");
         showSettingsFragment();
     }
+
 
 
 }
