@@ -18,6 +18,7 @@
         <activity android:name=".taskdetail.TaskDetailActivity"/>
         <activity android:name=".trigger.CronDetailFragment"/>
         <activity android:name=".trigger.TriggerDetailActivity"/>
+        <activity android:name=".taskdetail.TaskActionFragment"/>
         <service android:name=".service.BackgroundService"/>
     </application>
 </manifest>

@@ -81,6 +81,16 @@ public class UrlSynthesizer {
         return url.toString();
     }
 
+    public String task_action(String action,String task_id) {
+        StringBuilder url = new StringBuilder();
+        url.append(baseurl);
+        url.append("actions/");
+        url.append(action+"/");
+        url.append("ops_task_unix/");
+        url.append(task_id+"/");
+        return url.toString();
+    }
+
 
 
 }
