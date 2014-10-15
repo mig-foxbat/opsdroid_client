@@ -23,19 +23,18 @@ public class TriggerListAdapter extends BaseAdapter implements Filterable  {
     private static Context context;
     private TriggerNameFilter tgr_name_filter;
     private TriggerListAdapter() {
-
         list = new ArrayList<>(50);
         filtered_list = new ArrayList<>(10);
     }
 
-    enum tigger_type  {ops_trigger_tm
+    enum tigger_type  { ops_trigger_tm
         ,ops_trigger_time
         ,ops_trigger_temp
         ,ops_trigger_manual
         ,ops_trigger_forecast
         ,ops_trigger_fm
         ,ops_trigger_cron
-        ,ops_trigger_appl_monitor};
+        ,ops_trigger_appl_monitor };
 
     public static TriggerListAdapter getInstance(Context context){
        TriggerListAdapter.context = context;
@@ -45,7 +44,7 @@ public class TriggerListAdapter extends BaseAdapter implements Filterable  {
         return instance;
     }
 
-    public static TriggerListAdapter getInstance(){
+    public static TriggerListAdapter getInstance() {
         if (instance == null) {
             instance = new TriggerListAdapter();
         }
@@ -96,7 +95,7 @@ public class TriggerListAdapter extends BaseAdapter implements Filterable  {
     }
 
 
-    public void refreshData(JSONArray json_arr) {
+    public synchronized void refreshData(JSONArray json_arr) {
         list.clear();
         for( int i = 0 ,len = json_arr.length();  i < len ; i++) {
             try {
@@ -146,10 +145,13 @@ public class TriggerListAdapter extends BaseAdapter implements Filterable  {
                 }
             }
             else {
+
                 List<TriggerListRecord> textFilteredResult = new ArrayList<>();
-                for ( TriggerListRecord record : list) {
-                    if (record.name.toLowerCase().contains(constraint.toString().toLowerCase())) {
-                        textFilteredResult.add(record);
+                synchronized (TriggerListAdapter.this) {
+                    for (TriggerListRecord record : list) {
+                        if (record.name.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                            textFilteredResult.add(record);
+                        }
                     }
                 }
                 results.values = textFilteredResult;

@@ -41,6 +41,7 @@ public class TriggerFragment extends OpsListFragment {
 
     @Override
     public void onStart() {
+        Log.v(this.getClass().getName(),"on start called");
         super.onStart();
         this.getListView().setAdapter(adapter);
         String url = new UrlSynthesizer().trigger_list();
@@ -55,8 +56,8 @@ public class TriggerFragment extends OpsListFragment {
             try {
                 String data = new String(AppManager.getInstance().getRequestQueue().getCache().get(url).data);
                 JSONArray json_arr = new JSONArray(data);
-                  adapter.refreshData(json_arr);
-                  adapter.notifyDataSetChanged();
+                adapter.refreshData(json_arr);
+                adapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 Toast.makeText(TriggerFragment.this.getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
@@ -68,21 +69,6 @@ public class TriggerFragment extends OpsListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.triggerfragment,container,false);
-
-//        Button bu = (Button)view.findViewById(R.id.trigger_refresh);
-//        bu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                pd = new ProgressDialog(TriggerFragment.this.getActivity());
-//                pd.setIndeterminate(true);
-//                pd.setTitle("Please wait");
-//                pd.setMessage("Fetching Data");
-//                pd.show();
-//                TriggerFragment.this.makeRequest(new UrlSynthesizer().trigger_list());
-//            }
-//        });
-
-
 
         EditText et = (EditText)view.findViewById(R.id.triggernamefilter);
         et.addTextChangedListener(new TextWatcher() {
