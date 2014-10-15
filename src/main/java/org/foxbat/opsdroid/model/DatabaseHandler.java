@@ -104,10 +104,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor executeQuery(String sql, String[] selectionargs) {
+
+    public void insertToTable(String tablename,JSONObject value) {
+
         SQLiteDatabase database = this.getWritableDatabase();
-        return database.rawQuery(sql, selectionargs);
+        ContentValues cv = new ContentValues();
+        Iterator<String> it =  value.keys();
+        while(it.hasNext()) {
+            String key = it.next();
+            try {cv.put(key,value.getString(key)); } catch (JSONException e) { e.printStackTrace(); }
+        }
+        database.insert(tablename,null,cv);
     }
 
+
+    public Cursor executeSQL(String sql, String[] selectionargs) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor =  database.rawQuery(sql, selectionargs);
+        return cursor;
+    }
+
+    public void execRawSQL(String sql) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL(sql);
+        database.close();
+    }
 
 }

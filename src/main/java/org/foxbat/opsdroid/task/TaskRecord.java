@@ -21,6 +21,14 @@ public class TaskRecord {
     }
 
 
+    public void update(String ins_name, String sys_id, String task_id, String sys_class_name) {
+        this.ins_name = ins_name.toLowerCase();
+        this.sys_id = sys_id;
+        this.task_id = task_id;
+        this.sys_class_name = sys_class_name;
+    }
+
+
     public void setMainBlock(String task_name,String summary,String task_ref_count,String status_code) {
         this.task_name = task_name.toLowerCase();
         this.summary = summary;

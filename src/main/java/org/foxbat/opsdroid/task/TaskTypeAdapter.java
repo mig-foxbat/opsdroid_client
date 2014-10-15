@@ -123,10 +123,37 @@ public class TaskTypeAdapter extends BaseAdapter implements Filterable {
                 "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by,agent" +
                 " FROM opswise_master where datekey = %d;";
         DatabaseHandler handler = new DatabaseHandler();
-        Cursor cur = handler.executeQuery(String.format(sql, datekey), null);
+        Cursor cur = handler.executeSQL(String.format(sql, datekey), null);
         this.buildMasterArrayList(cur);
         generateFilteredRecords();
     }
+
+
+    public TaskRecord refreshData(String sys_id,int datekey) {
+        TaskRecord record = null;
+        String sql = "SELECT \n" +
+                "ins_name,sys_id,task_id,sys_class_name,task_name,summary,task_ref_count,status_code,queued_time,start_time,end_time,duration,retry_interval,retry_maximum,retry_indefinitely,attempt_count,sys_updated_by,sys_created_by,execution_user,invoked_by,agent" +
+                " FROM opswise_master where datekey = %d and sys_id = '%s';";
+        DatabaseHandler handler = new DatabaseHandler();
+        for (int i = 0, len = master_records.size() ; i < len ; i++ ) {
+            if (master_records.get(i).sys_id.equals(sys_id)) {
+                record = master_records.get(i);
+                break;
+            }
+        }
+        Cursor cur = handler.executeSQL(String.format(sql, datekey, sys_id), null);
+        for(cur.moveToNext(); !cur.isAfterLast(); cur.moveToNext()) {
+            record.update(cur.getString(0), cur.getString(1), cur.getString(2), cur.getString(3));
+            record.setMainBlock(cur.getString(4),cur.getString(5),cur.getString(6),cur.getString(7));
+            record.setTimeBlock(cur.getString(8), cur.getString(9), cur.getString(10), cur.getString(11));
+            record.setRetryBlock(cur.getString(12), cur.getString(13), cur.getString(14), cur.getString(15));
+            record.setUserBlock(cur.getString(16), cur.getString(17), cur.getString(18), cur.getString(19),cur.getString(20));
+            break;
+        }
+
+        return null;
+    }
+
 
 
 

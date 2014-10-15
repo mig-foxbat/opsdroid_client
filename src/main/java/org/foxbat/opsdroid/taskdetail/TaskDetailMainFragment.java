@@ -4,10 +4,12 @@ package org.foxbat.opsdroid.taskdetail;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import org.foxbat.opsdroid.R;
+import org.foxbat.opsdroid.task.TaskRecord;
 
 /**
  * Created by chlr on 10/7/14.
@@ -16,7 +18,6 @@ public class TaskDetailMainFragment extends Fragment {
 
     int record_id;
 
-
     public TaskDetailMainFragment(int record_id) {
         this.record_id = record_id;
     }
@@ -24,7 +25,6 @@ public class TaskDetailMainFragment extends Fragment {
     public TaskDetailMainFragment() {
 
     }
-
 
 
     @Override
@@ -45,4 +45,11 @@ public class TaskDetailMainFragment extends Fragment {
                 TaskDetailHistoryFragment.class, bundle);
         return v;
     }
+
+    protected void refreshGeneralTab(TaskRecord record) {
+        Log.v(this.getClass().getName(),"checkpoint 1");
+        TaskDetailGeneralTab fragment = (TaskDetailGeneralTab)this.getChildFragmentManager().findFragmentByTag("tab1");
+        fragment.setContent(record);
+    }
+
 }

@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -23,17 +22,18 @@ import org.foxbat.opsdroid.R;
 import org.foxbat.opsdroid.rest.AppManager;
 import org.foxbat.opsdroid.rest.UrlSynthesizer;
 import org.foxbat.opsdroid.task.TaskRecord;
+import org.foxbat.opsdroid.task.TaskTypeAdapter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,12 +45,7 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
     Map<String,String> datamap;
 
     public TaskActionFragment() {
-        if (datamap == null) this.datamap = getDataMap();
-    }
 
-    public TaskActionFragment(TaskRecord record)  {
-        this.record = record;
-        if (datamap == null) this.datamap = getDataMap();
     }
 
 
@@ -63,6 +58,13 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
         return map;
     }
 
+    @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
+        List<TaskRecord> list = (TaskTypeAdapter.getInstance()).getTaskRecords();
+        record = list.get(this.getArguments().getInt("position",0));
+        if (datamap == null) this.datamap = getDataMap();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -109,9 +111,7 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
         Document doc;
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
-
             DocumentBuilder db = dbf.newDocumentBuilder();
-
             InputSource is = new InputSource();
             is.setCharacterStream(new StringReader(xml));
             doc = db.parse(is);
@@ -140,6 +140,7 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
                 Element element = (Element)doc.getElementsByTagName("message").item(0);
                 String value = element.getAttribute("value");
                 Toast.makeText(TaskActionFragment.this.getActivity().getApplicationContext(), value, Toast.LENGTH_LONG).show();
+                ((TaskDetailActivity)TaskActionFragment.this.getActivity()).makeRequest();
             }
         };
 
@@ -160,7 +161,6 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
                 errorListener)
 
         {
-
             @Override
             protected Map<String,String> getParams() {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(TaskActionFragment.this.getActivity());
@@ -170,13 +170,9 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
                 return params;
             }
 
-
         };
 
         AppManager.getInstance().addToRequestQueue(request);
-
-
-
     }
 
 
@@ -209,10 +205,7 @@ public class TaskActionFragment extends Fragment implements View.OnClickListener
                     dialogInterface.dismiss();
                 }
             });
-
-
             return alertDialogBuilder.create();
-
         }
 
     }

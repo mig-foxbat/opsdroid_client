@@ -14,12 +14,28 @@ import org.foxbat.opsdroid.task.TaskTypeAdapter;
  * Created by chlr on 10/5/14.
  */
 public class TaskDetailGeneralTab extends Fragment {
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.task_detail_general_tab, container, false);
+        return v;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         Bundle bundle = this.getArguments();
         int position = bundle.getInt("position", 0);
         TaskRecord record = TaskTypeAdapter.getInstance().getTaskRecord(position);
-        View v = inflater.inflate(R.layout.task_detail_general_tab, container, false);
+        setContent(record);
+    }
+
+
+
+    public void setContent(TaskRecord record) {
+        View v = this.getView();
         ((TextView)v.findViewById(R.id.ins_name)).setText(record.ins_name);
         ((TextView)v.findViewById(R.id.task_name)).setText(record.task_name);
         ((TextView)v.findViewById(R.id.task_type)).setText(record.sys_class_name);
@@ -39,6 +55,6 @@ public class TaskDetailGeneralTab extends Fragment {
         ((TextView)v.findViewById(R.id.task_execution_user)).setText(record.execution_user);
         ((TextView)v.findViewById(R.id.task_invoked_by)).setText(record.invoked_by);
         ((TextView)v.findViewById(R.id.task_agent)).setText(record.agent);
-        return v;
     }
+
 }
